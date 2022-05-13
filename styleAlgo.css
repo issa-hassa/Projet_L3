@@ -1,0 +1,32 @@
+.triSelection {
+    width: 15%;
+    height: 100px;
+    border: 5px solid lavender;
+    position: relative;
+    bottom: -10vh;
+    left: 5%;
+}
+.triSelection a {
+   /* display: block;*/
+    font-size: medium;
+    text-decoration: transparent;
+    text-align:center;
+    bottom: 0;
+    position: absolute;
+    
+    
+}
+.triSelection div{
+    text-align: center;
+    background-color: rgb(2, 2, 2);
+}
+.triSelection a {
+    text-decoration: none;
+}
+.triSelection img{
+   
+    height: 85%;
+    width: 90%;
+    margin-left: 10px;
+    
+}
