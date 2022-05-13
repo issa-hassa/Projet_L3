@@ -19,24 +19,24 @@ function draw(){
   background(255);
   frameRate(5);
   if(i < n){
-      let min;
+      
       j ++;
       if(j >=i + 1){
-          j = i+1;
+          j = 0;
           i++;
       }
      // for (let j = 0; j < width; j++) {
-           min = i;
+           
            fill(0,255,0);
            rect(i*largeur,height - barres[i] ,largeur,barres[i]);
            fill(255,255,0);
             rect(j*largeur,height - barres[j],largeur,barres[j]);
-            if(barres[j + 1] < barres[j]){
-                let tmp1 = barres[i];
-                barres[i] = barres[min];
-                barres[min] = tmp1;
+            if(barres[j + 1] <= barres[j]){
+                let tmp1 = barres[j + 1];
+                barres[j + 1] = barres[j];
+                barres[j] = tmp1;
                 fill(255,0,0);
-                rect(min*largeur,height - barres[min] ,largeur,barres[min]);
+                //rect(min*largeur,height - barres[min] ,largeur,barres[min]);
                 
             }
             
