@@ -1,16 +1,21 @@
+/// <reference path="/Users/ahmed-korom/Desktop/TSDef/p5.global-mode.d.ts" />
 let barres = [];
 let largeur = 20;
 let n;
 let i = 0;
 let j = 0;
+let c;
 function setup(){//Math.max(document.documentElement.clientWidth,window.innerWidth || 0),400
- createCanvas(400,400);
+  c = createCanvas(400,400);
   n = width/largeur;
- background(0);
+  //c.position('0','0','fixed');
+  c.parent('canvas');
+  background(0);
 
  for (let i = 0; i <= n; i++) {
      barres.push(random(height));
  }
+ 
  
 
 }
@@ -50,7 +55,11 @@ function draw(){
 
     }
     else{
-        noLoop();
+        for (let i = 0; i <= n; i++) {
+            barres[i] = (random(height));
+        }
+        i = 0;
+        j = 0;
     }
     for (let l = 0; l < n; l++) {
             //fill(52,150,90);
