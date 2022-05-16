@@ -31,8 +31,9 @@
     
 }
 .table {
-    /*position: absolute;*/
-    bottom : -40%;
+   /* position: absolute;*/
+   /* bottom : -60%;*/
+   margin-top: 20px;
     display: grid;
     gap: 1em;
     grid-template-columns:1fr 1fr 1fr 1fr;

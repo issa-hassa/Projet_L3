@@ -11,9 +11,11 @@ nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px;
+   /* padding: 20px;*/
+    width: 100%;
+    
     background-color: #fff;
-    position: sticky;
+    /*position: sticky;*/
     top: 0;
     background-color: lavender;
 }
@@ -25,6 +27,7 @@ nav h1 {
 nav .onglets {
     display: flex;
     flex-wrap: wrap;
+    float: right;
 }
 
 nav .onglets p {
@@ -69,21 +72,21 @@ a {
 
 /* Fin de la barre de navigation */
 
-/* Header */
-header {
+/* nav */
+nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-header h1 {
+nav h1 {
     font-size: 50px;
     max-width: 500px;
-    text-align: center;
+    text-align: center
 }
 
-header button {
+nav button {
     padding: 15px 20px;
     font-size: 20px;
     border: none;
@@ -92,10 +95,12 @@ header button {
     cursor: pointer;
 }
 
-/* Fin du header */
+/* Fin du nav */
 
 /* Section principale */
-
+.logo{
+ float: left; 
+}
 .main {
     margin: 20px;
     margin-top: 80px;
@@ -123,7 +128,7 @@ header button {
 
 }
 
-.cards .card .card-header {
+.cards .card .card-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
