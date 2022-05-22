@@ -5,12 +5,18 @@ let n;
 let i = 0;
 let j = 0;
 let c;
+let b;
 function setup(){//Math.max(document.documentElement.clientWidth,window.innerWidth || 0),400
   c = createCanvas(400,400);
   n = width/largeur;
   //c.position('0','0','fixed');
   c.parent('canvas');
   background(0);
+  b = createButton("recommencer");
+  b.mousePressed(init);
+  b.parent('canvas');
+  
+
 
  for (let i = 0; i <= n; i++) {
      barres.push(random(height));
@@ -19,7 +25,14 @@ function setup(){//Math.max(document.documentElement.clientWidth,window.innerWid
  
 
 }
+function init(){
+     for (let i = 0; i <= n; i++) {
+            barres[i] = (random(height));
+        }
+        i = 0;
+        j = 0;
 
+}
 function draw(){
   background(255);
   frameRate(5);
@@ -35,7 +48,7 @@ function draw(){
            fill(0,255,0);
            rect(min*largeur,height - barres[min] ,largeur,barres[min]);
            fill(255,255,0);
-            rect(j*largeur,height - barres[j],largeur,barres[j]);
+           rect(j*largeur,height - barres[j],largeur,barres[j]);
             if(barres[j] < barres[min]){
                 min = j;
                 
@@ -55,11 +68,8 @@ function draw(){
 
     }
     else{
-        for (let i = 0; i <= n; i++) {
-            barres[i] = (random(height));
-        }
-        i = 0;
-        j = 0;
+        init();
+       
     }
     for (let l = 0; l < n; l++) {
             //fill(52,150,90);
@@ -77,7 +87,7 @@ function draw(){
  }
 
   function windowResized(){
-      resizeCanvas(Math.max(document.documentElement.clientWidth,window.innerWidth || 0),400);
+      resizeCanvas(400,400);
   }
  
    

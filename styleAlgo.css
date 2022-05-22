@@ -1,44 +1,131 @@
-.tri {
-   
-    
-    border: 5px solid lavender;
-    position: relative;
-    
-    
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Open Sans', sans-serif;
 }
+
+
+header {
+    padding: 0.2%;
+    background-color: rgb(114, 114, 112)
+}
+
+.logo {
+    display: inline-block;
+}
+
+.logo h3 {
+    display: block;
+    color: rgb(117, 6, 190);
+    font-weight: 800;
+    font-size: medium;
+    font-family: fantasy;
+}
+
+.onglets {
+    height: 0%;
+    display: inline-block;
+    position: relative;
+    left: 56%;
+
+}
+
+form {
+    display: inline-block;
+
+}
+
+a {
+    font-size: 17px;
+    margin-left: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+
+}
+
+a:hover {
+    color: black;
+    transition: 0.9s;
+
+}
+
+.tri {
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-bottom: 17px;
+    /* border: 8px solid rgb(126, 86, 131);*/
+    position: relative;
+    /*border-radius: 30%;*/
+    height: 200px;
+    width: 200px;
+    background-color: rgb(177, 173, 173);
+
+}
+
 .tri a {
-   /* display: block;*/
+    /* display: block;*/
     font-size: medium;
     text-decoration: transparent;
-    text-align:center;
+    text-align: center;
     bottom: 0;
     position: absolute;
-    
-    
 }
-.tri div{
+
+.div1 {
+    height: 100%;
+    width: 100%;
+}
+
+.div1 a {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+.div1 a:hover {
+    opacity: 0.4;
+    transition: 0.9s;
+}
+
+.div1 img {
+    position: relative;
+    margin: -4px -5px -13px -35px;
+}
+
+.div1 p {
     text-align: center;
-    background-color: rgb(2, 2, 2);
+
 }
+
+.tri div {
+    text-align: center;
+
+}
+
 .tri a {
     text-decoration: none;
+    color: black;
+    text-align: center;
 }
-.tri img{
-   
-    height: 85%;
-    width: 90%;
-    margin-left: 10px;
-    
+
+.tri img {
+
+    height: 80%;
+    width: 80%;
+    padding: 12%;
+
 }
+
 .table {
-   /* position: absolute;*/
-   /* bottom : -60%;*/
-   margin-top: 20px;
+    margin-top: 20px;
+    background-color: white;
     display: grid;
     gap: 1em;
-    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-auto-rows: 100px;
     grid-auto-columns: 100px;
-  
 }
