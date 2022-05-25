@@ -2,7 +2,7 @@
 
 let noeuds = [];
 let arcs = [];
-const NBMAX = 10;
+const NBMAX = 20;
 let nbNoeud;
 const R = 20;
 let b;
@@ -18,21 +18,25 @@ let positionCercle;
 let dir;
 let supNoeudBut //bouton pour supprimer un noeud
 let button;
+let c;
 function setup(){
- createCanvas(windowWidth*0.5,windowHeight*0.7);
- nbNoeud =0;
- graphe = new Graphe();
- button = false;
- bp = createButton("Parcours en profondeur");
- supNoeudBut = createButton('Supprimer');
- supNoeudBut.mousePressed(function(){supprimerNoeud(graphe)});
- bp.mousePressed(function(){for (const n of graphe.noeuds) {
-                          n.marquer = false;
-                          n.changeCouleur = false;
-                            }
+    c = createCanvas(windowWidth*0.5,windowHeight*0.7);
+    c.style('display','block');
+   // c.style('border-style','groove');
+   // c.style('border','10px');
+    c.parent("canvas");
+    nbNoeud =0;
+    graphe = new Graphe();
+    button = false;
+    bp = createButton("Parcours en profondeur");
+    bp.parent('p5');
+    supNoeudBut = createButton('Supprimer');
+    supNoeudBut.mousePressed(function(){graphe.supprimerNoeud()});
+    supNoeudBut.parent('p5');
+    bp.mousePressed(function(){
                         res = parcoursEnProfondeur(graphe)} );
- n = 0;
- positionCercle = createVector(0,0);
+    n = 0;
+    positionCercle = createVector(0,0);
 
 }
 
@@ -44,7 +48,11 @@ function draw(){
   
   if(n < res.length - 1 && res.length >0){
     //   circle(res[0].vecteur.x,res[0].vecteur.y,40);
-      circle(positionCercle.x,positionCercle.y,R*2); 
+     push();
+     fill(51);
+     circle(positionCercle.x,positionCercle.y,R*2); 
+     pop();
+      
       dir = createVector(positionCercle.x - res[n+1].vecteur.x,positionCercle.y - res[n+1].vecteur.y);
       dir.normalize();
       //if(positionCercle.x <res[n+1].vecteur.x)
@@ -52,6 +60,7 @@ function draw(){
      // if(positionCercle.y <res[n+1].vecteur.y)
        positionCercle.y -=dir.y;
       if(equaux(positionCercle,res[n+1].vecteur)){
+          noFill();
            res[n + 1].changeCouleur = true;
              n++;
              
@@ -61,28 +70,31 @@ function draw(){
  
 
  }
- function equaux(v1,v2){ return (round(v1.x)== round(v2.x) && round(v1.y)== round(v2.y)) }
+ function equaux(v1,v2){ return ((round(v1.x)  == round(v2.x)||round(v1.x)+1  == round(v2.x)||
+                                  round(v1.x)  == round(v2.x)+1) 
+                                && (round(v1.y)== round(v2.y)||round(v1.y)+1== round(v2.y))||
+                                round(v1.y)== round(v2.y) + 1) }
 
  function mouseIn(){
      return (mouseX < width && mouseX > 0 )&& (mouseY < height && mouseY > 0);
  }
  function mouseClicked(){
-     if(mouseIn()){
-         let nonSelect = graphe.selectNoeuds(); // on selectionne un noeud si la souris est positionnée sur un noeuds existant
-  
-   let nSelect =  graphe.noeuds.filter(a => a.select === true);
-   if(nSelect.length ===1 && nonSelect ) nSelect[0].select = false; 
-    else if((nbNoeud <= NBMAX ) && nonSelect && mouseIn() ){
+    if(mouseIn()){
+        let nonSelect = graphe.selectNoeuds(); // on selectionne un noeud si la souris est positionnée sur un noeuds existant
+    
+        let nSelect =  graphe.noeuds.filter(a => a.select === true);
+        if(nSelect.length ===1 && nonSelect ) nSelect[0].select = false; 
+        else if((nbNoeud <= NBMAX ) && nonSelect && mouseIn() ){
 
-        graphe.ajouterNoeud(new Noeud(createVector(mouseX,mouseY),false,nbNoeud));
-        nbNoeud++;
-    }
-    else if (nbNoeud > NBMAX){
-        console.log("nombre de noeud max atteint");
-       // alert("nombre de noeud max depassé");
-    }
+            graphe.ajouterNoeud(new Noeud(createVector(mouseX,mouseY),false,nbNoeud));
+            nbNoeud++;
+        }
+        else if (nbNoeud > NBMAX){
+            console.log("nombre de noeud max atteint");
+        // alert("nombre de noeud max depassé");
+        }
 
-     }
+    }
     
    
     
@@ -101,6 +113,7 @@ class Noeud{
         this.value = value;
         this.marquer = false;
         this.changeCouleur = false;
+        this.vistieApartirDe = undefined;
         
     }
     show(){
@@ -115,6 +128,18 @@ class Noeud{
         text(this.value+"",this.vecteur.x,this.vecteur.y);
 
     }
+    parent(n){
+        this.visteApartirDe = n;
+    }
+    noudsVoisin(g){
+        let voisins = [];
+        for (const a of g.arcs) {
+            if(a.noeud1 === this  ) voisins.push(a.noeud2);
+            else if(a.noeud2 === this) voisins.push(a.noeud1);
+        }
+        return voisins;
+    }
+    
     
     
 }
@@ -124,11 +149,21 @@ class arc{
         this.noeud2 = noeud2;
     }
     show(){
-        
+        push();
+        if(this.selectionee()){strokeWeight(20);stroke(0,255,0)}
         line(this.noeud1.vecteur.x ,this.noeud1.vecteur.y,
             this.noeud2.vecteur.x,this.noeud2.vecteur.y);
+        pop();
+       
         
     }
+   selectionee(){
+       let d = dist(this.noeud1.vecteur.x,this.noeud1.y,this.noeud2.vecteur.x,this.noeud2.y)
+       let d1 = dist(mouseX,mouseY,this.noeud1.vecteur.x,this.noeud1.vecteur.y);
+       let d2 = dist(mouseX,mouseY,this.noeud2.vecteur.x,this.noeud2.vecteur.y);
+
+       return (d === d1 + d2 ||d === d1 + d2  + 5 ||d + 5 === d1 + d2   );
+   }
     
 }
 
@@ -154,6 +189,7 @@ class Graphe{
     ajouterArcs(a){
         this.arcs.push(a);
     }
+    
     selectNoeuds(){
         let res = true;
         for (const n of this.noeuds) {
@@ -179,17 +215,27 @@ class Graphe{
         return res;
 
     }
+    supprimerNoeud(){
+        this.arcs = this.arcs.filter(a => !(a.noeud1.select || a.noeud2.select));
+        this.noeuds = this.noeuds.filter(n =>!(n.select));
+    }
 }
 
 function parcoursEnProfondeur(graphe){
+    n = 0;
+    for (const n of graphe.noeuds) {
+        n.marquer = false;
+        n.changeCouleur = false;
+    }
     let res = [];
     for (const n of graphe.noeuds) {
         if(n.marquer === false){
-            explorer(graphe,n,undefined,res);
+          explorer(graphe,n,undefined,res);
         }
+       
     }
     positionCercle = createVector(res[0].vecteur.x,res[0].vecteur.y);
-    res[n].changeCouleur = true;
+    res[0].changeCouleur = true;
     
     return res;
 
@@ -221,14 +267,19 @@ let so;
 function explorer(graphe,s,so,res){
     let t = false;
     s.marquer = true;
-    res.push(s);
+    //res.push(s);
+    //s.parent(so);
     for (const a of graphe.arcs) {
         if(a.noeud1 == s && a.noeud2.marquer == false){
             t =true;
+            res.push(s);
+            res.push(a.noeud2);
             explorer(graphe,a.noeud2,s,res);
         } 
         else  if(a.noeud2 == s && a.noeud1.marquer == false){
             t = true;
+            res.push(s);
+            res.push(a.noeud1);
             explorer(graphe,a.noeud1,s,res);
             
 
@@ -245,19 +296,8 @@ function explorer(graphe,s,so,res){
 function parcoursEnLargeurIteratif(){
 
 }
+let arccSup = [];
 
-function supprimerNoeud(g){
-        let index = 0;
-       
-     for (let i = 0; i < g.noeuds.length; i++) {
-         if(g.noeuds[i].select) g.noeuds.splice(i,1);
-         
-     }
-      for (let i = 0; i < g.arcs.length; i++) {
-          if(g.arcs[i].noeud1.select || g.arcs[i].noeud2.select) g.arcs.splice(i,1);
-          
-      }
-    }
 function windowResized(){
     resizeCanvas(windowWidth*0.5,windowHeight*0.7);
 }
