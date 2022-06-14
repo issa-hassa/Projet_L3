@@ -5,51 +5,6 @@ body {
 }
 
 
-header {
-    padding: 0.2%;
-    background-color: rgb(114, 114, 112)
-}
-
-.logo {
-    display: inline-block;
-}
-
-.logo h3 {
-    display: block;
-    color: rgb(117, 6, 190);
-    font-weight: 800;
-    font-size: medium;
-    font-family: fantasy;
-}
-
-.onglets {
-    height: 0%;
-    display: inline-block;
-    position: relative;
-    left: 56%;
-
-}
-
-form {
-    display: inline-block;
-
-}
-
-a {
-    font-size: 17px;
-    margin-left: 16px;
-    margin-right: 10px;
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
-
-}
-
-a:hover {
-    color: black;
-    transition: 0.9s;
-
-}
 
 .tri {
     margin-top: 40px;

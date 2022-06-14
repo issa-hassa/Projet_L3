@@ -1,98 +1,106 @@
 /// <reference path="/Users/ahmed-korom/Desktop/TSDef/p5.global-mode.d.ts" />
-let tailles = [];
-let nbrBarres;
+let barres = [];
+let temps = [];
+let nbBarre;
+let largeur = 20;
 let i;
 let j;
-let largeur = 20;
-let couleur ;
-let x1;
-let x2;
-let b1;// barre a la postion j
-let b2; // barre à la position j - 1;
-let p ;
-let ix1;
-let ix2;
-let z;
+let a;
+let b;
 function setup(){
+    
     createCanvas(400,400);
-    frameRate(5);
-    p = true;
-   
-    // nbrBarres =floor(width/(largeur*2));
-    nbrBarres = 7;
-    let xoffSet = 2;
-    for (let i = 0; i <= nbrBarres; i++) {
-        tailles.push(new Barre((i+xoffSet)*largeur,random(height)));
-        xoffSet++;
+    nbBarre =width/largeur;
+    for (let i = 0; i < nbBarre; i++) {
+        barres.push(new Barre(i*largeur,random(height)));
+        temps.push(new Barre(i*largeur,random(height)));
     }
-    i = 0;
-    j = i + 1;
-
-
-}
+    i = 1;
+    j = 1;
+    b = false;
+   // temp = barres[j];
+    
+    
+}   
 function draw(){
-    frameRate(1);
    
-    e1 = false;
-    e2 = false; 
-    if(i <= nbrBarres){
-        background(255);
-        let x;
-        // if(i === nbrBarres + 1)  x = tailles[j].h;
-        {x =  tailles[i].h;}
+    background(51);
+    for (const b of barres) {
+        b.show();
+    }
+    if(i < nbBarre ){
         
-   
+        x = barres[i];
+        x.offSet = x.h;
+       
+       
         
-        //let c = tailles[j];
-         
-        if( (j > 0 && tailles[j-1].h > x)){
-           tailles[j].h = tailles[j -1].h;
+        if(j > 0 && barres[j-1].h > x.h ){
+           b = true; 
+           a =  barres[j-1].swap(temps[j]);   
+           if(a){
+            j --;
           
-           
-           
-        } else {
-            tailles[j].h = x;
+            }
+        }
+        
+        else{
             
-                i++;
-                j = i;
-        }
-         j--;
+            if(b){
 
-       
-       
-          
-        
-        
-        
-        
-        let l = 0;
-        for (let b of tailles) {
-            fill(255,0,255);
-            if(l === j) fill(0,255,0);
-            if(l ===i) fill(255,0,0);
-            b.show();
-            l++;
+                if(x.swap(temps[j])){
+                    x.offSet = 0;
+                    i++;
+                    j = i;
+                }
+           } 
+           else{
+                x.offSet = 0;
+                
+                    i++;
+                    j = i;
+            }
+            // let index = 0;
+            // for (const b of barres) {
+            //     temps[index].x = b.x + 0;
+            //     index ++;
+            // }
            
+
+           
+            
+               
+            
         }
 
-
-        
-
-
     }
-    else{
-        noLoop();
-    }
+    
 
 }
 class Barre{
     constructor(x,h){
         this.x = x;
         this.h = h;
+        this.offSet = 0;
     }
     show(){
-        rect(this.x,height - this.h,largeur,this.h);
-        text(""+ floor(this.h),this.x,height - this.h);
+        if(this.offSet !== 0) fill(112,112,114);
+        else{fill(255)};
+        rect(this.x,height - (this.h + this.offSet),largeur,this.h);
+        text(""+ floor(this.h),this.x,height - (this.h + this.offSet));
+    }
+    swap(b){
+        let dir = createVector(this.x - b.x,0);
+        dir.normalize();
+        this.x -= dir.x;
+        
+        return dir.x === 0;
+    }
+    desc(){
+        if(this.offSet > 0){
+            this.offSet--;
+        }
+        return this.offSet === 0;
     }
 
 

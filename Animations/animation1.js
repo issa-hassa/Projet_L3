@@ -4,15 +4,17 @@ const a1 = ( animation_1 ) => {
     let particles = [];
     let NBpart;
     let mouseOut;
-     animation_1.setup = () =>{
+    animation_1.setup = () =>{
         c = animation_1.createCanvas(animation_1.windowWidth, animation_1.windowHeight);
+
         c.mouseOut(isout);
         c.mouseOver(isin);
         c.style('border-radius','100% 0% 0% 0%');
+        c.parent('p5');
        // c.position(animation_1.windowWidth-400,animation_1.windowHeight - 400);
         NBpart= (animation_1.width*animation_1.height)/9000;
         //NBpart = 100;
-       // console.log( (width/7)*(height/7));
+        // console.log( (width/7)*(height/7));
         // c.style('display','block');
         //  c.style('z-index','-1');
         //  c.position(0,0,'fixed');
@@ -21,12 +23,9 @@ const a1 = ( animation_1 ) => {
             particles.push(new Particle(animation_1.random(animation_1.width - size*2) ,animation_1.random(animation_1.height - size*2),animation_1.random(-2.5,2.5),animation_1.random(-2.5,2.5),size));
             
         }
-   
-
-
 
     }
-     animation_1.windowResized =() => {
+    animation_1.windowResized =() => {
     resizeCanvas(400, 400);
     
     }

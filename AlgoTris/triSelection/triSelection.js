@@ -36,30 +36,34 @@ function init(){
 function draw(){
   background(255);
   frameRate(5);
+  let min = i;
   if(i < n){
-      let min;
+      
       j ++;
       if(j >=n){
+          if(min != i ){
+            let tmp1 = barres[i];
+            barres[i] = barres[min];
+            barres[min] = tmp1;
+            }
           j = i+1;
           i++;
+          min = i;
       }
      // for (let j = 0; j < width; j++) {
-           min = i;
-           fill(0,255,0);
-           rect(min*largeur,height - barres[min] ,largeur,barres[min]);
+           
+          
            fill(255,255,0);
            rect(j*largeur,height - barres[j],largeur,barres[j]);
             if(barres[j] < barres[min]){
                 min = j;
                 
             }
-            if(min != i){
+            fill(0,255,0);
+           rect(min*largeur,height - barres[min] ,largeur,barres[min]);
+            if(min != i ){
             fill(255,0,0);
             rect(min*largeur,height - barres[min] ,largeur,barres[min]);
-            let tmp1 = barres[i];
-            barres[i] = barres[min];
-            barres[min] = tmp1;
-
             }
        // }
       //  i++;
@@ -68,7 +72,7 @@ function draw(){
 
     }
     else{
-        init();
+      //  init();
        
     }
     for (let l = 0; l < n; l++) {
