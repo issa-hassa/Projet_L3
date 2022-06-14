@@ -40,6 +40,8 @@ let prof;
 let j;
 let oriented;
 let offSet;
+let choixAlgo;
+let type;
 
 function setup(){
     let grapheE = localStorage.getItem("graphe");
@@ -47,14 +49,15 @@ function setup(){
     if(grapheE != null){
         
         graphe = utilitaire.jsonToGraphe(grapheE);
-        nbNoeud = graphe.noeuds.length;
+        nbNoeud = utilitaire.max(graphe.noeuds) + 1;
+
        
     }
     else {graphe = new Graphe();nbNoeud = 0}
    
     c = createCanvas(windowWidth*0.5,windowHeight*0.5);
     c.parent("canvas");
-    oriented = createCheckbox("Orienté :",false);
+    oriented = createCheckbox("",false);
     oriented.parent('p5');
     
     canvasDiv = select('#p5');
@@ -67,6 +70,8 @@ function setup(){
     
     button = false;
     element = document.getElementById('text');
+    
+   // choixAlgo.innerHTML = "choisir un algorithme: ";
     entreePoid = createInput("poids","text");
     buttonPoid = createButton("ok");
     entreePoid.parent("poids");
@@ -97,29 +102,20 @@ function setup(){
     selectMenu.option('Parcours en profondeur');
     selectMenu.option('Parcours en largeur');
     selectMenu.option('Arbre couvrant');
-    selectMenu.position(0,-20);
+    selectMenu.position(150,-20);
+    choixAlgo = createP("Choisir un algorithme :");
+    choixAlgo.parent('p5');
+    choixAlgo.position(0,-35);
+    type = createP("orienté ?");
+    type.parent('p5');
+    oriented.position(width - 20,-20);
+    type.position(width - 80,-35)
 
     enregisterBut.mousePressed(function(){utilitaire.enregistrerGraphe()});
 
 
     
-    // bpF.parent('p5');
-    // bpL.parent('p5');
-    // bAC.parent('p5');
-    
-
-    // bpF.mousePressed(function(){
-    //                     init();
-    //                     res = parcoursEnProfondeur(graphe,aff)} );
-    // bpL.mousePressed(function(){
-    //                     init();
-    //                     res = parcoursEnLargeur(graphe,graphe.noeuds[0])} );
-    // bAC.mousePressed(function(){
-    //                     init();
-    //                     res = parcoursEnProfondeur(graphe,aff)
-    //                     arbeCouvrant = true;
-
-    //                  });
+   
     buttonReinitialiser.mousePressed(function(){
         utilitaire.reinitialiser(graphe);
     })
@@ -219,8 +215,9 @@ function mouseIn(){
             for (const arc of graphe.arcs) {
                 arc.select = false;
             }
-            graphe.ajouterNoeud(new Noeud(new vecteur(mouseX,mouseY),false,nbNoeud));
-            nbNoeud++;
+            
+            if(graphe.ajouterNoeud(new Noeud(new vecteur(mouseX,mouseY),false,nbNoeud)))nbNoeud++;
+            
         }
         
         else if (nbNoeud > NBMAX){

@@ -51,6 +51,13 @@ utilitaire.jsonToGraphe = function(g){
         if(this.contientN(res.noeuds,arc.noeud1) === undefined){ res.noeuds.push(arc.noeud1) }
         
     }
+    
+    for (let i = 0; i < g.elementSupp.length; i++) {
+        let nJSON = g.elementSupp[i];
+        let n1 = new Noeud(new vecteur(nJSON.vecteur.x,nJSON.vecteur.y) , nJSON.select,floor(nJSON.value));
+        res.elementSupp.push(n1);
+        
+    }
     res.noeuds.sort(function(a,b){return a.value - b.value});
     return res;
 
@@ -67,7 +74,7 @@ utilitaire.doublon = function(a1,a2){
 utilitaire.enregistrerGraphe = function(){
     let serializedGraphe = circular.serialize(graphe);
 
-// save(serializedGraphe,'graphe');
+    save('graphe.png');
     localStorage.setItem('graphe', serializedGraphe);
 
 };
@@ -117,4 +124,9 @@ utilitaire.contient= function(tab,val){
 utilitaire.memeArcNonOriente = function(a1,a2){
     return (a1.noeud1 == a2.noeud1 || a1.noeud1 == a2.noeud2) &&(a1.noeud2 == a2.noeud2 || a1.noeud2 == a2.noeud1);
 };
+utilitaire.max = function(tab){
+   return  tab.reduce(function(a,b){
+            return (a.value > b.value ? a.value : b.value)
+    })
+}
 

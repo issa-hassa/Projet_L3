@@ -5,4 +5,5 @@
 }
 .p5 button {
     cursor: pointer;
+    position: absolute;
 }

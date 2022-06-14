@@ -6,6 +6,7 @@ class Graphe{
         this.pondere = false;
         this.oriente = false;
         this.intermed = [];
+        this.elementSupp = [];
         this._c = circular.register('Graphe');
     }
     /**
@@ -29,8 +30,20 @@ class Graphe{
      * @param {Noeud} n le neoud à ajouter au graphe
      */
     ajouterNoeud(n){
-       
-        this.noeuds.push(n);
+        console.log(this.elementSupp.length !== 0)
+       if(this.elementSupp.length !== 0){
+           this.elementSupp.sort(function(a,b){return b.value - a.value});
+           let nS = this.elementSupp.pop();
+           nS.select = false;
+           nS.vecteur = n.vecteur;
+            this.noeuds.push(nS);
+            return false;
+       }
+       else{
+            this.noeuds.push(n);
+            return true;
+       }
+        
     }
     /**
      * Ajoute un arc dans le graphe
@@ -101,6 +114,9 @@ class Graphe{
      */
     supprimer(){
         this.arcs = this.arcs.filter(a => !(a.noeud1.select || a.noeud2.select));
+        for (const n of this.noeuds) {
+            if(n.select) this.elementSupp.push(n);
+        }
         this.noeuds = this.noeuds.filter(n =>!(n.select));
         this.arcs = this.arcs.filter(a => !(a.select) );
         
