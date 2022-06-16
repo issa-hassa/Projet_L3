@@ -11,6 +11,7 @@ class Noeud{
         this.vistieApartirDe = undefined;
         this.color =  204;
         this.cBip = undefined;
+        this.aff = false;
         
         
        // this.couleur = undefined;
@@ -37,15 +38,15 @@ class Noeud{
      * 
      * @param {Noeud} n le neoud à partir du quel ce neoud à été visité
      */
-    parent(n){
-        this.visteApartirDe = n;
-    }
+    // parent(n){
+    //     this.visteApartirDe = n;
+    // }
     /**
      * 
      * @param {Graphe} g 
      * @returns l'ensemble des voisins du noeud dans le graphe g
      */
-    noudsVoisin(g){
+    noeudsVoisin(g){
         let voisins = [];
         for (const a of g.arcs) {
             if(a.noeud1 === this  ) voisins.push(a.noeud2);

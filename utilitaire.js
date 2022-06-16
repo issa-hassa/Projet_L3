@@ -10,11 +10,11 @@ utilitaire.jsonToGraphe = function(g){
     for(let i = 0 ; i< res.arcs.length;i++ ){
         let a  = res.arcs[i];
         let n1 = new Noeud(new vecteur(a.noeud1.vecteur.x,a.noeud1.vecteur.y) , a.noeud1.select,floor(a.noeud1.value));
-        console.log(n1);
+        
         n1.changeCouleur = a.noeud1.changeCouleur;
         n1.color = a.noeud1.color; 
         let n2 = new Noeud(new vecteur(a.noeud2.vecteur.x,a.noeud2.vecteur.y), a.noeud2.select, floor(a.noeud2.value));
-        console.log(n2);
+        
         n2.changeCouleur = a.noeud2.changeCouleur;
         n2.color = a.noeud2.color;
         let resa ;
@@ -89,7 +89,9 @@ utilitaire.reinitialiser = function(g){
         noeud.marquer = false;
         noeud.changeCouleur = false;
         noeud.visteApartirDe = undefined;
+        noeud.cBip = undefined;
     }
+    element.innerHTML = "";
 };
 /**
  * 

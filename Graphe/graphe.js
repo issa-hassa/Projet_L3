@@ -30,7 +30,7 @@ class Graphe{
      * @param {Noeud} n le neoud à ajouter au graphe
      */
     ajouterNoeud(n){
-        console.log(this.elementSupp.length !== 0)
+         
        if(this.elementSupp.length !== 0){
            this.elementSupp.sort(function(a,b){return b.value - a.value});
            let nS = this.elementSupp.pop();

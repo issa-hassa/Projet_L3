@@ -42,14 +42,32 @@ let oriented;
 let offSet;
 let choixAlgo;
 let type;
-
+let DFSdiv;
+let DFSdivP5;
+let BFSdiv;
+let BFSdivP5;
+let ACMdiv;
+let ACMdivP5;
+let butFermerDFS;
+let fermerDFS;
+let butFermerBFS;
+let fermerBFS;
+let butFermerACM;
+let fermerACM;
+let nbclicked;
 function setup(){
+
     let grapheE = localStorage.getItem("graphe");
-     
+    fermerDFS = false;
+    fermerACM = false;
+    fermerBFS = false;
     if(grapheE != null){
         
         graphe = utilitaire.jsonToGraphe(grapheE);
-        nbNoeud = utilitaire.max(graphe.noeuds) + 1;
+        if(graphe.noeuds.length !==0) nbNoeud = utilitaire.max(graphe.noeuds) + 1
+        else{
+            nbNoeud = 0;
+        }
 
        
     }
@@ -59,19 +77,41 @@ function setup(){
     c.parent("canvas");
     oriented = createCheckbox("",false);
     oriented.parent('p5');
-    
+    butFermerDFS = createButton('Fermer');
+    butFermerBFS = createButton('Fermer');
+    butFermerACM = createButton('Fermer');
+
+    butFermerDFS.parent("buttonFermer1");
+    butFermerBFS.parent("buttonFermer2");
+    butFermerACM.parent("buttonFermer3");
+
     canvasDiv = select('#p5');
+    
     
     oriented.changed(changeType);
     //oriented.style('position','relative');
     //oriented.position(width-50,height+50);
     
     
-    
+    nbclicked = 0;
     button = false;
     element = document.getElementById('text');
+    DFSdiv = document.getElementById("algoDFS");
+    DFSdivP5 = select("#algoDFS");
+    BFSdiv = document.getElementById("algoBFS");
+    BFSdivP5 = select("#algoBFS");
+    ACMdiv = document.getElementById("ACM");
+    ACMdivP5 = select("#ACM");
     
-   // choixAlgo.innerHTML = "choisir un algorithme: ";
+    DFSdivP5.position(windowWidth/2 + 20,100);
+    BFSdivP5.position(windowWidth/2 + 20,100);
+    ACMdivP5.position(windowWidth/2 + 20,100);
+    
+   // choixAlgo.innerHTML = "choisir un DFSdiv: ";
+
+    butFermerDFS.mousePressed(function(){fermerDFS = true; DFSdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
+    butFermerBFS.mousePressed(function(){fermerBFS = true; BFSdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
+    butFermerACM.mousePressed(function(){fermerACM = true; ACMdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
     entreePoid = createInput("poids","text");
     buttonPoid = createButton("ok");
     entreePoid.parent("poids");
@@ -90,6 +130,12 @@ function setup(){
     enregisterBut.position(width-(2*offSet +20),height+2);
     supprimer.position(width-(3*offSet +35),height+2);
     buttonReinitialiser.position(width-(4*offSet +60),height+2);
+  //  DFSdivP5.position(0,height+100);
+  //  DFSdiv.style.display ='none';
+   // BFSdivP5.position(0,height+100);
+   // BFSdiv.style.display ='none';
+    //ACMdivP5.position(0,height+100);
+   // ACMdiv.style.display ='none';
     fi = new priorityQueue();
     let  i = 0;
     j = 0;
@@ -99,16 +145,20 @@ function setup(){
     
     selectMenu = createSelect();
     selectMenu.parent('p5');
+    selectMenu.option("Choisir un algorithme :")
     selectMenu.option('Parcours en profondeur');
     selectMenu.option('Parcours en largeur');
     selectMenu.option('Arbre couvrant');
-    selectMenu.position(150,-20);
-    choixAlgo = createP("Choisir un algorithme :");
+    selectMenu.option('Bipartie?');
+    selectMenu.mousePressed(showDivs);
+    choixAlgo = createP();
     choixAlgo.parent('p5');
-    choixAlgo.position(0,-35);
+     
     type = createP("orienté ?");
     type.parent('p5');
     oriented.position(width - 20,-20);
+    selectMenu.position(0,-20);
+    choixAlgo.position(0,-35);
     type.position(width - 80,-35)
 
     enregisterBut.mousePressed(function(){utilitaire.enregistrerGraphe()});
@@ -124,10 +174,20 @@ function setup(){
         switch(selectMenu.value()){
             case 'Parcours en profondeur' : res = parcoursEnProfondeur(graphe,aff);prof = new laser(res);break;
             case 'Parcours en largeur' : res = parcoursEnLargeur(graphe,graphe.noeuds[0]);prof = new laser(res,'parcoursLargeur');break;
-            case 'Arbre couvrant' : res = kruskal(graphe);prof = new laser(res,'Arbre couvrant'); 
+            case 'Arbre couvrant' : res = kruskal(graphe);prof = new laser(res,'Arbre couvrant'); break;
+            case  'Bipartie?' : if(estbipatie(graphe,graphe.noeuds[0])){
+                                element.innerHTML = "Le graphe est bipartie"
+                                }
+                                else{
+                                element.innerHTML = "Le graphe n'est pas bipartie"
+                                }
+                    
+                                break;
+            
         }
 
     })
+
 
 
     buttonPoid.mousePressed(function() {graphe.setPoids()});
@@ -151,17 +211,62 @@ function setup(){
 
 function draw(){
     //frameRate(1);
-    background(51);
+    background(44, 45, 66);
     graphe.show();
-    if(res.length >0){
+    if(res !== undefined && res.length >0){
         if(!arbeCouvrant){
             prof.show();
             prof.update();
         }
     }
-     
+    
+    if(selectMenu.value() !== "Parcours en profondeur" ){
+        DFSdiv.style.display ='none';
+        
+    } 
+    else if(!fermerDFS){
+        canvasDiv.position(0 ,100);
+        
+         DFSdiv.style.display ='block';
+    }
+    if(selectMenu.value() !== "Parcours en largeur"){
+        BFSdiv.style.display ='none';
+
+    } 
+    else if(!fermerBFS){
+        canvasDiv.position(0 ,100);
+        BFSdiv.style.display ='block';
+    }
+    if(selectMenu.value() !== "Arbre couvrant"){
+        
+        ACMdiv.style.display ='none';
+    } 
+    else if(!fermerACM){
+        canvasDiv.position(0 ,100);
+        ACMdiv.style.display ='block';
+    }
+    if(selectMenu.value() =="Choisir un algorithme :"){
+        ACMdiv.style.display ='none';
+        BFSdiv.style.display ='none';
+        DFSdiv.style.display ='none';
+        canvasDiv.position(windowWidth/2 - width/2,100);
+    }
  
 
+}
+function showDivs(){
+    ;
+    if(nbclicked === 1){
+        switch (selectMenu.value()){
+            case 'Parcours en profondeur' : DFSdiv.style.display ='block';canvasDiv.position(0 ,100);break;
+            case 'Parcours en largeur' :BFSdiv.style.display ='block';canvasDiv.position(0 ,100);break
+            case 'Arbre couvrant' : ACMdiv.style.display ='block';canvasDiv.position(0 ,100);break;
+           
+        
+        }
+        nbclicked = 0;
+    }
+    nbclicked ++
 }
  /**
   * initialisation des valeurs pour les animations
@@ -242,7 +347,9 @@ function mouseIn(){
 // }
 
 function parcoursEnProfondeur(graphe,aff){ 
-    element.innerHTML = "La liste des noeuds du parcours en profondeur  :";    
+    element.innerHTML = "La liste des noeuds du parcours en profondeur  :";   
+  //  DFSdiv.style('display','block');
+    
     n = 0;
     
     let res = [];
@@ -256,7 +363,7 @@ function parcoursEnProfondeur(graphe,aff){
     
     res[0].changeCouleur = true;
     noeuPrecedent = res[0];
-    element.innerHTML += aff[0].value ;
+   // element.innerHTML += aff[0].value ;
     //console.log(aff[0].value);
     
     return res;
@@ -328,6 +435,15 @@ function parcoursEnLargeur(g,s){
 
 function windowResized(){
     resizeCanvas(windowWidth*0.5,windowHeight*0.5);
+    executer.position(width-offSet,height+2);
+    enregisterBut.position(width-(2*offSet +20),height+2);
+    supprimer.position(width-(3*offSet +35),height+2);
+    buttonReinitialiser.position(width-(4*offSet +60),height+2);
+    canvasDiv.position(windowWidth/2 - width/2,100);
+    selectMenu.position(0,-20);
+    choixAlgo.position(0,-35);
+    type.position(width - 80,-35)
+    oriented.position(width - 20,-20);
 }
 
 
@@ -338,6 +454,17 @@ function windowResized(){
 
 
 function kruskal(g){
+    let p = parcoursEnLargeur(g,g.noeuds[0]);
+    p[0].changeCouleur = false; 
+    element.innerHTML = "";
+     
+    for (const n of g.noeuds) {
+        if(!n.marquer){ alert("le graphe doit etre convexe");return}
+        else{
+            n.marquer = false;
+        }
+    }
+
     let U = new UnionFind(g.noeuds);
     let res = [];
     let copie = new Array(g.arcs);
@@ -375,7 +502,7 @@ function prims(g,s){
     let t  = f.dequeueFunction();
     while(t != null){
         
-        let voisin = t.noudsVoisin(g);
+        let voisin = te.noeudsVoisin(g);
         for (const u of voisin) {
            
             let tu = g.getArc(t,u);
@@ -468,12 +595,23 @@ function changeType() {
 //red = 0
 //blue = 1;
 function estbipatie(g,s){
+    for (const n of graphe.noeuds) {
+        n.cBip = undefined;
+    }
+    parcoursEnLargeur(g,graphe.noeuds[0]);
+    for (const n of g.noeuds) {
+        if(!n.marquer){ alert("le graphe doit etre connexe");return}
+        else{
+            n.marquer = false;
+        }
+    }
     let r = [];
     s.cBip = 0;
+
     r.push(s);
     while(r.length !== 0){
         let n1 = r.shift();
-        for (const n2 of n1.noudsVoisin(g)) {
+        for (const n2 of n1.noeudsVoisin(g)) {
             if(n2.cBip === undefined){
                 n2.cBip =(n1.cBip == 0)?1 : 0;
                 r.push(n2);

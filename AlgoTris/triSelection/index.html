@@ -1,32 +1,44 @@
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script language="javascript" type="text/javascript" src="../../libraries/p5.min.js"></script>
+  <link rel="stylesheet" href="../../header.css">
 
-  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
-  <script language="javascript" type="text/javascript" src="/Users/ahmed-korom/Desktop/dossier sans titre/libraries/p5.min.js"></script>
-
-   
- 
- 
-  <!--  branch --unset-upstream OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
-
-  <!-- This line removes any default padding and style.
-       You might only need one of these values set. -->
-  <style> body { padding: 0; margin: 0; } </style>
 </head>
 
 <body>
   <script language="javascript" type="text/javascript" src="triSelection.js"></script>
+  <header>
+
+    <div class="logo">
+      <div class="imgLogo"><img src="../../images/logo.png" alt=""> </div>
+      <div class="nomLogo">
+        <h3>AlgoSoupe</h3>
+      </div>
+    </div>
+
+    <div class="onglets">
+      <a href="../../web.html">Acceuil</a>
+      <a href="../../Algo.html">Algorithmes</a>
+      <a href="../../graphe.html"> Graphe </a>
+
+    </div>
+
+  </header>
+
+
+  <div id="canvas"></div>
   <h1>Tri selection</h1>
-  <div id = "canvas"></div>
-  <h2 >Principe :</h2>
+  <h2>Principe :</h2>
   <p>Le tri par selection est un algorithme de tri tres simple qui consiste à chercher
-    le plus pétit element du tableau, le remplacer avec l'element a l'indice zero, recommencer 
-  l'operation mais cette fois si en remplacant le plus petit element avec l'element a l'indice un et ainsi de suite.  </p>
+    le plus pétit element du tableau, le remplacer avec l'element a l'indice zero, recommencer
+    l'operation mais cette fois si en remplacant le plus petit element avec l'element a l'indice un et ainsi de suite.
+  </p>
   <h2>algorithme :</h2>
   <p>
-    <pre>
+  <pre>
       procédure tri_selection(tableau t) <br>
       n ← longueur(t) <br>
       pour i de 0 à n - 2 <br>
@@ -38,10 +50,11 @@
       fin procédure<br>
 
     </pre>
-    
+
   </p>
 
-  
- 
+
+
 </body>
+
 </html>

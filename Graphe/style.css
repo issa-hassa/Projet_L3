@@ -1,9 +1,48 @@
-
-.canvas{
-    border-style: groove;
-    /* border: 10px; */ 
+body {
+    padding: 0;
+    margin: 0;
 }
+
+.canvas {
+    border-style: groove;
+    /* border: 10px; */
+}
+
 .p5 button {
     cursor: pointer;
     position: absolute;
+    border: none;
+    padding: 8px;
+    color: white;
+    background-color: #04AA6D;
+
+}
+
+.p5 input {
+    padding: 3px;
+
+}
+
+.p5 select {
+    padding: 2px;
+
+}
+
+.showAlgo ul {
+    margin-top: 120px;
+
+}
+
+.showAlgo li {
+    margin-top: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: large;
+    font-family: fantasy;
+
+}
+
+.showAlgo li:hover {
+    color: #04AA6D;
+
 }

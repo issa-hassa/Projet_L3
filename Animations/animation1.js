@@ -1,11 +1,11 @@
-/// <reference path="/Users/ahmed-korom/Desktop/TSDef/p5.global-mode.d.ts" />
+
 const a1 = ( animation_1 ) => {
     let c;
     let particles = [];
     let NBpart;
     let mouseOut;
     animation_1.setup = () =>{
-        c = animation_1.createCanvas(animation_1.windowWidth, animation_1.windowHeight);
+        c = animation_1.createCanvas(animation_1.windowWidth, animation_1.windowHeight*0.8);
 
         c.mouseOut(isout);
         c.mouseOver(isin);
@@ -25,8 +25,9 @@ const a1 = ( animation_1 ) => {
         }
 
     }
+   
     animation_1.windowResized =() => {
-    resizeCanvas(400, 400);
+    animation_1.resizeCanvas(animation_1.windowWidth, animation_1.windowHeight*0.8);
     
     }
     function isout(){
@@ -225,10 +226,10 @@ let a2 = (animation_2) => {
 }
 
 let r = Math.floor(Math.random() * 2);
-if(r == 0){
+/*if(r == 0){
     let animation = new p5(a2);
-}
-else{
+}*/
+//else{
     let animation = new p5(a1);
-}
+//}
 

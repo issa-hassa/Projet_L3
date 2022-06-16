@@ -17,51 +17,153 @@
     <script language="javascript" type="text/javascript" src="circular.js"></script>
     <script language="javascript" type="text/javascript" src="utilitaire.js"></script>
     <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="Graphe/style.css" >
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
-    <!-- <link rel="stylesheet" href="Graphe/style.css" /> -->
+    <link rel="stylesheet" href="Graphe/style.css">
+
 </head>
 
 <body>
-    <!-- Barre de navigation -->
 
     <header>
         <div class="logo">
-            <h3>AlgoSoupe</h3>
+            <div class="imgLogo"><img src="images/logo.png" alt=""> </div>
+            <div class="nomLogo">
+                <h3>AlgoSoupe</h3>
+            </div>
         </div>
         <div class="onglets">
             <a href="web.html">Acceuil</a>
             <a href="Algo.html">Algorithmes</a>
             <a href="graphe.html">Graphe</a>
 
-
-            <form>
-                <input type="search" placeholder="Rechercher">
-            </form>
-
         </div>
-   
+
     </header>
     <div class="p5" id="p5">
-        <div class="choix" id ="choix"></div>
+        <div class="choix" id="choix"></div>
         <div class="canvas" id="canvas"> </div>
         <div class="poids" id="poids"> </div>
         <div class="text" id="text"></div>
+
     </div>
-    <!-- Fin de la barre de navigation -->
-    <!-- nav -->
+    <div class="algo" id="algoDFS">
+        <div class="alg">
+            <h3>Parcours en profondeur</h3>
+            Le parcours en profondeur est un algorithme de parcours d'un grahpe <br>
+            L'algorithme commence tout d'abord par un noeud queleconque le marque comme étant <strong> visité</strong>
+            <br>,
+            ensuite parmi les voisins du noeuds courant on choisit un noeud queleconque non visité, et on repéte <br>
+            jusqu'à ce qu'on tombe sur cul-de-sac et dans ce cas on revient sur nos pas
+            (<strong>backtracking</strong>).<br>
+            A cause de la nature recursive de l'algorithme une pile peut étre utiliser pour l'implementer, le procesus
+            de
+            l'implementation<br>
+            du parcours en pronfondeur est similaire à celui du parcours en largeur:<br>
 
-    <!-- Fin du nav -->
-    <!-- Section principale -->
-    <section class="main">
+            &ensp; 1. Creér une pile vide.<br>
+            &ensp; 2. Choisir un noeud queleconque comme point de depart de l'algorithme et l'ajouter dans la pile.<br>
+            &ensp; 3. Ajouter un noeud non visité adjacent au noeud courant à la tete de la pile et le marquer comme
+            etant
+            visité.<br>
+            &ensp; 4. Repeter 3 jusqu'à ce qu'il n'y est plus de noeud à visiter à partir du noeud courant (le noeud à
+            la tete
+            de la pile).<br>
+            &ensp; 5. S'il reste aucun neoud, retirer le noeud à la tete de la pile.<br>
+            &ensp; 6. Repeter 2,3 et 4 jusqu'à ce que la pile soit vide.<br>
+
+            <h4>l'algorithme :</h4><br>
+            &ensp;procedure DFS_iterative(G, v) is <br>
+            &ensp;&ensp; let S be a stack<br>
+            &ensp;&ensp; S.push(v)<br>
+            &ensp;&ensp; while S is not empty do <br>
+            &ensp;&ensp;&ensp; v = S.pop() <br>
+            &ensp;&ensp;&ensp; if v is not labeled as discovered then <br>
+            &ensp;&ensp;&ensp; label v as discovered <br>
+            &ensp;&ensp;&ensp; for all edges from v to w in G.adjacentEdges(v) do<br>
+            &ensp;&ensp;&ensp;&ensp; S.push(w)<br>
 
 
-    </section>
-    <!-- Fin de la section principale -->
-    <!-- Pied de page -->
 
-    <!-- Fin du pied de page -->
+        </div>
+        <div class="buttonFermer" id="buttonFermer1"> </div>
+    </div>
+    <div class="algo" id="algoBFS">
+        <div>
+
+            <h3>parcours en largeur</h3>
+            Le parcours en largeur est un algorithme de parcours d'un grahpe <br>
+            L'algorithme commence tout d'abord par un noeud queleconque le marque comme étant <strong> visité</strong>
+            <br>,
+            ensuite on visite tous les voisins du noeuds courant non encore visité, et on repéte avec les voisin du
+            noeud
+            courant: <br>
+
+
+            &ensp; 1. Creér une file vide.<br>
+            &ensp; 2. Choisir un noeud queleconque comme point de depart de l'algorithme et l'ajouter dans la file.<br>
+            &ensp; 3. Retirer le noeud du début de la file pour le traiter.<br>
+            &ensp; 4. Mettre tous ses voisins non explorés dans la file<br>
+            &ensp; 5. Si la file n'est pas vide reprendre à l'étape 2.<br>
+
+
+            <h4>l'algorithme :</h4><br>
+            &ensp;procedure ParCoursLargeur(Graphe g, Sommet s) is <br>
+            &ensp;&ensp; let Q be a queue <br>
+            &ensp;&ensp; label root as explored<br>
+            &ensp;&ensp; Q.enqueue(root)<br>
+            &ensp;&ensp; while Q is not empty do <br>
+            &ensp;&ensp;&ensp; v := Q.dequeue() <br>
+            &ensp;&ensp;&ensp; for all edges from v to w in G.adjacentEdges(v) do <br>
+            &ensp;&ensp;&ensp;&ensp; if w is not labeled as explored then <br>
+            &ensp;&ensp;&ensp;&ensp;&ensp; label w as explored<br>
+            &ensp;&ensp;&ensp;&ensp;&ensp; Q.enqueue(w)<br>
+
+
+        </div>
+        <div class="buttonFermer" id="buttonFermer2"> </div>
+    </div>
+
+    <div class="algo" id="ACM">
+        <div>
+            <h3>Arbre couvrant minimum</h3>
+            Etant donnée un graphe connexe non orienté, un arbre couvrant de ce graphe est un arbre( un graphe connexe
+            et
+            acyclique )<br>
+            qui connecte tous les noeuds. Un grahpe peut avoir plusieurs arbres couvrants.<strong>Un abre couvrant de
+                poids
+                minimum</strong><br>
+            pour un graphe ponderé, connexe, et non orienté est un arbre couvrant ayant un poids plus pétit ou egal au
+            poids de
+            chaque arbre<br>
+            couvrant possible du graphe.<br>
+            Plusieurs algorithmes peuvent etre utiliser pour avoir l'ACM d'un graphe (algorithme de Boruvka,
+            l'algorithme de
+            Prim, l'algorithme de Kruskal),<br>
+            nous utiliserons l'algorithme de Kruskal.<br>
+            <h4>Kruskal</h4><br>
+            L'algorithme de Kruskal fonctionne de la maniere suivante :<br>
+            &ensp;&ensp; 1.Trier toules arcs du grahpe dans l'ordre croissant du poids.<br>
+            &ensp;&ensp; 2.Prendre l'arc avec le plus petit poids et l'ajouter dans l'ACM si cet arc ne forme pas de
+            cycle<br>
+            &ensp;&ensp; (On fait cette verification avec une structure de données Union-Find) dans l'ACM<br>
+            &ensp;&ensp; 3. Repeter l'étape 2 pour tous les arcs du graphe. <br>
+            <h5>Algorithme :</h5><br>
+            Kruskal(G) :<br>
+            1 &ensp;A := ø<br>
+            2&ensp; pour chaque sommet v de G :<br>
+            3&ensp; créerEnsemble(v)<br>
+            4&ensp; trier les arêtes de G par poids croissant<br>
+            5&ensp; pour chaque arête (u, v) de G prise par poids croissant :<br>
+            6&ensp;&ensp; si find(u) ≠ find(v) :<br>
+            7&ensp;&ensp;ajouter l'arête (u, v) à l'ensemble A<br>
+            8&ensp;&ensp; union(u, v)<br>
+            9&ensp; renvoyer A<br>
+
+        </div>
+
+        <div class="buttonFermer" id="buttonFermer3"> </div>
+    </div>
+
+
 </body>
 
 </html>
-

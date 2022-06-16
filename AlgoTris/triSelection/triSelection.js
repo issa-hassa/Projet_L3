@@ -2,10 +2,11 @@
 let barres = [];
 let largeur = 20;
 let n;
-let i = 0;
-let j = 0;
+let i ;
+let j;
 let c;
 let b;
+let index;
 function setup(){//Math.max(document.documentElement.clientWidth,window.innerWidth || 0),400
   c = createCanvas(400,400);
   n = width/largeur;
@@ -15,81 +16,97 @@ function setup(){//Math.max(document.documentElement.clientWidth,window.innerWid
   b = createButton("recommencer");
   b.mousePressed(init);
   b.parent('canvas');
-  
-
 
  for (let i = 0; i <= n; i++) {
-     barres.push(random(height));
+    barres.push(new Barre(i*largeur,random(height)));
  }
- 
- 
-
+  i = 0;
+  j = 1;
+  index = 0;
 }
-function init(){
-     for (let i = 0; i <= n; i++) {
-            barres[i] = (random(height));
-        }
-        i = 0;
-        j = 0;
 
-}
 function draw(){
   background(255);
   frameRate(5);
-  let min = i;
-  if(i < n){
+  let c = 0;
+  for (const b of barres) {
+    if(c ===j){
+      fill(255,0,0);
+     // b.show();
+    }
+    else if(c === i){
+      fill(112,112,114);
       
-      j ++;
-      if(j >=n){
-          if(min != i ){
-            let tmp1 = barres[i];
-            barres[i] = barres[min];
-            barres[min] = tmp1;
-            }
-          j = i+1;
-          i++;
-          min = i;
-      }
-     // for (let j = 0; j < width; j++) {
-           
-          
-           fill(255,255,0);
-           rect(j*largeur,height - barres[j],largeur,barres[j]);
-            if(barres[j] < barres[min]){
-                min = j;
-                
-            }
-            fill(0,255,0);
-           rect(min*largeur,height - barres[min] ,largeur,barres[min]);
-            if(min != i ){
-            fill(255,0,0);
-            rect(min*largeur,height - barres[min] ,largeur,barres[min]);
-            }
-       // }
-      //  i++;
-        
-
-
+    }
+    else if (c === index){
+      fill(0,255,0);
     }
     else{
-      //  init();
-       
+      fill(51,100,100);
     }
-    for (let l = 0; l < n; l++) {
-            //fill(52,150,90);
-            noFill();
-            stroke(52,150,90);
-            if(l < i){
-                fill(150,100,100);
-                
-            }
-            rect(l*largeur,height - barres[l],largeur,barres[l]);
-        }
-  /*rect(0,height - 50,20,50);
-  rect(20,height - 50,20,50);
-  rect(40,height - 50,20,50);*/
- }
+    b.show();
+    c++;
+    
+  }
+  if(i<barres.length -1){
+    barres[i].current = true;
+    
+    if(j < barres.length){
+      barres[j].j = true;
+      if(barres[index].h > barres[j].h){
+        index = j;
+        
+      }
+      
+      j++;
+    }
+    else{
+      console.log(barres[i]);
+      let temp =  barres[i].h;
+      barres[i].h = barres[index].h;
+      barres[index].h= temp;
+      barres[i].current = false;
+      i++;
+      j = i+1;
+      index = i;
+    }
+   
+     
 
+    
+  }
+}
+class Barre{
+    constructor(x,h){
+        this.x = x;
+        this.h = h;
+        this.offSet = 0;
+        this.current = false;
+        this.j = false;
+    }
+    show(){
+       // if(this.current) fill(112,112,114);
+       // else if(this.j)fill(255,0,0);
+        //{fill(51,100,100)};
+        rect(this.x,height - (this.h + this.offSet),largeur,this.h);
+        text(""+ floor(this.h),this.x,height - (this.h + this.offSet));
+    }
+    swap(b){
+        let dir = createVector(this.x - b.x,0);
+        dir.normalize();
+        this.x -= dir.x;
+        console.log(dir.x === 0);
+        return dir.x === 0;
+    }
+    desc(){
+        if(this.offSet > 0){
+            this.offSet--;
+        }
+        return this.offSet === 0;
+    }
+
+
+}
   function windowResized(){
       resizeCanvas(400,400);
   }
@@ -102,3 +119,12 @@ function draw(){
 
 
 
+function init(){
+     for (let i = 0; i <= n; i++) {
+            barres[i] = (random(height));
+        }
+        i = 0;
+        index = i;
+        j = 1;
+
+}

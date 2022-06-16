@@ -8,7 +8,9 @@ class laser
         this.R = 40;
         this.algo = algo;
         this.i = 0;
-
+        for (const n of cibles) {
+            n.aff = false;
+        }
     }
     show(){
         if(this.algo != 'Arbre couvrant' && this.n < this.cibles.length){
@@ -63,14 +65,18 @@ class laser
         }
         else{
             if(this.n < this.cibles.length){
+            
             dir = createVector(this.position.x - this.cibles[this.n].vecteur.x,this.position.y - this.cibles[this.n].vecteur.y);
             dir.normalize();
             this.position.x -=dir.x;
             this.position.y -=dir.y;
             if(this.equaux(this.position,this.cibles[this.n].vecteur)){
+                
                 this.cible.changeCouleur = true;
+                if(!this.cible.aff ) element.innerHTML +=this.cible.value;this.cible.aff = true;
                 this.n++;
                 this.cible = this.cibles[this.n];
+                
             }
         }
 
