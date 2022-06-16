@@ -2,4 +2,4 @@
 
 ## Digramme de classe
 
-![Screenshot]: (images/algoSoupeUml.png)
+![Screenshot](https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe/-/tree/master/images/algoSoupeUml.png)
