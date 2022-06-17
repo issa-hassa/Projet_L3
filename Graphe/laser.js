@@ -8,8 +8,8 @@ class laser
         this.R = 40;
         this.algo = algo;
         this.i = 0;
-        for (const n of cibles) {
-            n.aff = false;
+        for (const no of cibles) {
+            no.aff = false;
         }
     }
     show(){

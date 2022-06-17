@@ -375,6 +375,8 @@ function parcoursEnProfondeur(graphe,aff){
         }
        
     }
+    
+    
     positionCercle = new vecteur(res[0].vecteur.x,res[0].vecteur.y);
     
     res[0].changeCouleur = true;
@@ -409,10 +411,13 @@ function explorer(graphe,s,so,res,aff){
             
 
         }
+        else{
+            res.push(s);
+        }
         
         
     }
-    if(!t) res.push(so);
+    if(!t &&  so != undefined)  res.push(so);
    
 
 

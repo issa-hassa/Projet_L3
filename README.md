@@ -48,9 +48,8 @@ On peut commencer à utiliser AlgoSoupe en ouvarant   l'un des pages du site (we
 ![pageGraphe](images/algoPage.png)
 
 - #### on appuit une fois pour ajouter un noeud.
-  ![ajoutNoeud](images/ajoutNoeud.gif)
+  ![ajoutNoeud](images/ajouterNOEUD.gif)
 - #### on peut clicker sur un noeud pour le selectionner, clicker sur le boutton supprimer pour le supprimer. En supprimant un noeud on supprime aussi tous les arcs liés à ce neoud.
-  ![ajoutNoeud](images/ajoutNoeud.gif)
   ![supNoeud](images/supNoeud.gif)
 - #### une fois un noeud selectionner on peut selectionner un autre noeud pour créer un arc entre les deux.
   ![creerArc](images/ajoutArc.gif)
