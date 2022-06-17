@@ -35,8 +35,7 @@ On peut aussi recuperer le graphe sous forme d'une image png.
 On peut acceder au projet de la manière suivante :
 
 ```
-$ git clone https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe.git ou telecharger directement le projet  ![ici](https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe/-/archive/master/algosoupe-master.zip)
-
+$ git clone https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe.git ou telecharger directement le projet  <a href = "https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe/-/archive/master/algosoupe-master.zip" > </a>
 On peut commencer à utiliser AlgoSoupe en ouvarant   l'un des pages du site (web.html,Algo.html ou graphe.html) dans un naviguateur.
 
 
