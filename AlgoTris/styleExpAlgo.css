@@ -48,8 +48,8 @@ h1 {
 .but button {
     cursor: pointer;
     position: absolute;
-    border: none;
-    padding: 8px;
+    /* border: none; */
+    /* padding: 8px; */
     color: white;
     background-color: #04AA6D;
 }

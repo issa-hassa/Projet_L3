@@ -89,3 +89,7 @@ body {
     opacity: 0.6;
     transition: 0.9s;
 }
+.text{
+    margin-top: 10%;
+    font-size: larger;
+}

@@ -73,7 +73,7 @@ class laser
             if(this.equaux(this.position,this.cibles[this.n].vecteur)){
                 
                 this.cible.changeCouleur = true;
-                if(!this.cible.aff ) element.innerHTML +=this.cible.value;this.cible.aff = true;
+                if(!this.cible.aff ) element.innerHTML += " "+this.cible.value;this.cible.aff = true;
                 this.n++;
                 this.cible = this.cibles[this.n];
                 

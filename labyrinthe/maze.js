@@ -5,19 +5,24 @@ let current;
 let but;
 let butRes;
 let on;
+let canvas;
 
 function setup() {
-    createCanvas(400, 400);
-    but = createButton('Start/Stop');
+    canvas = createCanvas(500, 470);
+    canvas.parent("canvas1");
+    but = createButton('Start / Stop');
+    but.parent("but");
     on = true;
     reset();
     but.mousePressed(start);
     butRes = createButton('reset');
+    butRes.parent("but");
     butRes.mousePressed(reset);
+    //butRes.position(115,height+windowWidth*0.073)
 
 }
 function reset(){
-  background(255);
+  background(51);
   on = false;
   stack = [];
   grid = [];
@@ -42,7 +47,7 @@ function start(){
 }
 
 function draw() {
-    frameRate(10);
+    frameRate(20);
    
     if(on){
       background(51);

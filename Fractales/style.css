@@ -1,0 +1,33 @@
+.textL{
+    
+  float: right;
+ overflow: scroll;
+ height: 70%;
+ width: 45%;
+ border: solid;
+ padding-left: 10px;
+ padding-right: 10px;
+ margin-right: 10px;
+ margin-top: 20px;
+}
+    
+.canvas {
+     height: 100%;
+     width: 50%;
+     float: left;
+     margin-left: 25px;
+    margin-top: 30px;
+ }
+ .canvas button {
+     cursor: pointer;
+     position: absolute;
+     border: none;
+     padding: 8px;
+     color: white;
+     background-color: #04AA6D;
+ }
+
+ .canvas button:hover {
+     opacity: 0.6;
+     transition: 0.9s;
+ }
