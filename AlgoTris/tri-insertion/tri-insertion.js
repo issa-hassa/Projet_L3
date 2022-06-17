@@ -14,12 +14,9 @@ let ix2;
 let z;
 let c;
 function setup(){
-    c = createCanvas(400,380);
-    frameRate(5);
-    c.parent("canvas");
+    c= createCanvas(400,380);
     p = true;
-
-    // nbrBarres =floor(width/(largeur2));
+    c.parent("canvas");
     nbrBarres = width/largeur;
     let xoffSet = 2;
     for (let i = 0; i <= nbrBarres; i++) {
@@ -30,59 +27,30 @@ function setup(){
     j = i + 1;
 }
 function draw(){
-    //frameRate(1);
-
+    frameRate(2);
     e1 = false;
     e2 = false; 
     if(i <= nbrBarres ){
         background(255);
         let x;
-       
         {x =  tailles[i].h;}
-
-
-
-      
-
-        if( (j > 0 && tailles[j-1].h > x)){
-           tailles[j].h = tailles[j -1].h;
-
-
-
-        } else {
+        if( (j > 0 && tailles[j-1].h > x)) tailles[j].h = tailles[j -1].h;
+        else {
             tailles[j].h = x;
-
-                i++;
-                j = i;
+            i++;
+            j = i;
         }
-         j--;
-
-
-
-
-
-
-
-
+        j--;
         let l = 0;
         for (let b of tailles) {
-             fill(51,100,100);
+            fill(51,100,100);
             if(l === j) fill(255,0,0);
             if(l ===i) fill(112,112,114);
             b.show();
             l++;
-
         }
-
-
-
-
-
     }
-    else{
-        noLoop();
-    }
-
+    else noLoop();
 }
 class Barre{
     constructor(x,h){
@@ -93,6 +61,4 @@ class Barre{
         rect(this.x,height - this.h,largeur,this.h);
         text(""+ floor(this.h),this.x,height - this.h);
     }
-
-
 }

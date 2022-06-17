@@ -33,7 +33,8 @@ header {
 .nomLogo h3 {
     display: block;
     padding-top: 6px;
-
+    color: white;
+    font-family: fantasy;
 }
 
 .onglets {
@@ -80,12 +81,12 @@ footer img {
 
 }
 
-ul {
+footer ul {
 
     top: 0;
 }
 
-li {
+footer li {
     display: inline;
     list-style: none;
     font-size: small;

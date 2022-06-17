@@ -1,55 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 body {
     margin: 0px;
     padding: 0px;
     font-family: 'Open Sans', sans-serif;
 }
 
-
-header {
-    padding: 0.2%;
-    background-color: rgb(114, 114, 112)
-}
-
-.logo {
-    display: inline-block;
-}
-
-
-.logo h3 {
-    display: block;
-    color: rgb(22, 23, 24);
-    font-weight: 800;
-    font-size: medium;
-    /* font-family: fantasy; */
-}
-
-.onglets {
-    height: 0%;
-    display: inline-block;
+.tri {
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-bottom: 17px;
     position: relative;
-    left: 56%;
+    height: 200px;
+    width: 200px;
+    background-color: rgb(69, 77, 95);
 
 }
 
-form {
+.tri a {
+    font-size: medium;
+    text-decoration: transparent;
+    text-align: center;
+    bottom: 0;
+    position: absolute;
+}
+
+.div1 {
+    height: 100%;
+    width: 100%;
+}
+
+.div1 a {
+    position: relative;
     display: inline-block;
-
+    height: 100%;
+    width: 100%;
 }
 
-a {
-    font-size: 17px;
-    margin-left: 16px;
-    margin-right: 10px;
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
-
-}
-
-a:hover {
-    color: black;
+.div1 a:hover {
+    opacity: 0.4;
     transition: 0.9s;
+}
 
+.div1 img {
+    position: relative;
+    margin: -4px -5px -13px -35px;
+}
+
+.div1 p {
+    text-align: center;
+}
+
+.tri div {
+    text-align: center;
+}
+
+.tri a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+.tri img {
+    height: 80%;
+    width: 80%;
+    padding: 12%;
+}
+
+.table {
+    height: 60%;
+    width: 100%;
+    background-color: white;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    grid-auto-rows: 100px;
+    grid-auto-columns: 100px;
+    margin-top: 1px;
 }

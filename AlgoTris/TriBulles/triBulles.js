@@ -1,78 +1,64 @@
-let barres = [];
+let tailles = [];
+let nbrBarres;
+let i;
+let j;
 let largeur = 20;
-let n;
-let i = n;
-let j = 0;
-let couleur;
-let p;
-let m ;
-let b;
+let couleur ;
+let x1;
+let x2;
+let b1;// barre a la postion j
+let b2; // barre à la position j - 1;
+let p ;
+let ix1;
+let ix2;
+let z;
 let c;
-
-
 function setup(){
-  c = createCanvas(400,400);
-  c.parent("canvas");
-  n = width/largeur;
-
-  background(0);
-  i = n;
-
- init();
- couleur = color(0,255,0);
- p = false;
- b.mousePressed(init);
-}
-function init(){
-    barres = [];
- for (let i = 0; i <= n; i++) {
-     barres.push(random(height));
- }
-  i = n;
-  j = 0;
-}
-
-function draw(){
-  background(255);
-  frameRate(1);
-  if(i > 1){
-      
-      j ++;
-      if(j >i + 1){
-          j = 0;
-          i--;
-      }
-     
-            if(barres[j + 1] <= barres[j]){
-                let tmp1 = barres[j + 1];
-                barres[j + 1] = barres[j];
-                barres[j] = tmp1;
-                p = true;
-
-                
-            }
-
-
+    c= createCanvas(400,380);
+    p = true;
+    c.parent("canvas");
+    nbrBarres = width/largeur;
+    let xoffSet = 2;
+    for (let i = 0; i <= nbrBarres; i++) {
+        tailles.push(new Barre((i)*largeur,random(height)));
+        xoffSet++;
     }
-    else init();
-    for (let l = 0; l < n; l++) {
-            
-            fill(51,100,100);
-            if(l == j+1  ) fill(255,0,0);
-            rect(l*largeur,height - barres[l],largeur,barres[l]);
-           
-        }
+    i = 0;
+    j = i + 1;
 }
-
-  function windowResized(){
-      resizeCanvas(Math.max(document.documentElement.clientWidth,window.innerWidth || 0),400);
-  }
- 
-   
-   
-
-  
-
-
-
-
+function draw(){
+    frameRate(2);
+    e1 = false;
+    e2 = false; 
+    if(i <= nbrBarres ){
+        background(255);
+        let x;
+        {x =  tailles[i].h;}
+        if( (j > 0 && tailles[j-1].h > x)) tailles[j].h = tailles[j -1].h;
+        else {
+            tailles[j].h = x;
+            i++;
+            j = i;
+        }
+        j--;
+        let l = 0;
+        for (let b of tailles) {
+            fill(51,100,100);
+            if(l === j) fill(255,0,0);
+            if(l ===i) fill(112,112,114);
+            b.show();
+            l++;
+        }
+    }
+    else noLoop();
+}
+class Barre{
+    constructor(x,h){
+        this.x = x;
+        this.h = h;
+    }
+    show(){
+        rect(this.x,height - this.h,largeur,this.h);
+        text(""+ floor(this.h),this.x,height - this.h);
+    }
+}

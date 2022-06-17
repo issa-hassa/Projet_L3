@@ -3,14 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <script language="javascript" type="text/javascript" src="../../libraries/p5.min.js"></script>
     <script language="javascript" type="text/javascript" src="tri-insertion.js"></script>
     <link rel="stylesheet" href="../../header.css">
-
-
-
+    <link rel="stylesheet" href="../styleExpAlgo.css">
 </head>
 
 <body>
@@ -32,6 +28,42 @@
         </div>
 
     </header>
+
+    <section class="general">
+        <div id="canvas" class="canvas"></div>
+        <div class="algoE">
+            <h1>Tri par insertion</h1>
+            <h2>Visualisation :</h2>
+            <ul>
+                <li> <strong> Barre Grise :</strong> L'élèment à l'indice i</li>
+                <li> <strong> Barre Rouge :</strong> L'élèment à l'indice j </li>
+            </ul>
+            <h2>Principe :</h2>
+            <p>Le tri par insertion est un algorithme de tri simple <br>
+                qui fonctionne de la même manière que le tri des cartes lors d'une partie de jeu de cartes <br>
+                Virtuellement, le tableau est divisé en deux parties: une partie triée et une partie non triée <br>
+                Les élèments de la partie non triée, sont placés à la bonne position dans la partie triée <br>
+                l'element a l'indice un et ainsi de suite.
+            </p>
+            <h2>Algorithme :</h2>
+            <pre>
+            procédure tri_insertion(tableau T) <br>
+                pour i de 1 à taille(T) - 1 <br>
+                    # mémoriser T[i] dans x <br>
+                    x ← T[i] <br>                           
+                    # décaler les éléments T[0]..T[i-1] qui <br>
+                    sont plus grands que x, en partant de T[i-1] <br> 
+                    j ← i <br>                        
+                    tant que j > 0 et T[j - 1] > x<br>
+                        T[j] ← T[j - 1]<br>
+                        j ← j - 1<br>
+                    # placer x dans le "trou" laissé par le décalage <br>
+                    T[j] ← x   <br>       
+            </pre>
+
+        </div>
+    </section>
+
 
 
 

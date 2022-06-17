@@ -8,6 +8,7 @@
     <script language="javascript" type="text/javascript" src="../../libraries/p5.min.js"></script>
     <script language="javascript" type="text/javascript" src="triBulles.js"></script>
     <link rel="stylesheet" href="../../header.css">
+    <link rel="stylesheet" href="../styleExpAlgo.css">
 
 
 
@@ -30,6 +31,30 @@
         </div>
 
     </header>
+    <section class="general">
+        <div id="canvas" class="canvas"></div>
+        <div class="algoE">
+            <h1>Tri à bulles</h1>
+            <h2>Visualisation :</h2>
+            <ul>
+                <li> <strong> Barre Rouge :</strong> L'élèment à l'indice i </li>
+            </ul>
+            <h2>Principe :</h2>
+            <p>Le tri à bulle est l'algorithme de tri le plus simple. Il consiste à effectuer des <br>
+                permutations consécutives des élèments adjacents qui ne sont pas dans le bon ordre <br>
+            </p>
+            <h2>Algorithme :</h2>
+
+            <pre>
+                  tri_à_bulles(Tableau T) <br>
+                  pour i allant de (taille de T)-1 à 1 <br>
+                  pour j allant de 0 à i-1 <br>
+                  si T[j+1] < T[j] <br>
+                  (T[j+1], T[j]) = (T[j], T[j+1]) <br>
+                </pre>
+
+        </div>
+    </section>
 
 
 

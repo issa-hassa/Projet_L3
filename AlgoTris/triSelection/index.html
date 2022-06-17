@@ -29,17 +29,24 @@
 
   </header>
 
- <div  class="general">
-    <div id="canvas"></div>
+  <section class="general">
+    <div id="canvas" class="canvas"></div>
     <div class="algoE">
-      <h1>Tri selection</h1>
+      <h1>Tri par selection</h1>
+      <h2>Visualisation :</h2>
+      <ul>
+        <li> <strong> Barre Grise :</strong> L'élèment à l'indice i</li>
+        <li> <strong> Barre Rouge :</strong> L'élèment à l'indice j </li>
+        <li> <strong> Barre verte : </strong> Le plus petit élèment entre i et j </li>
+      </ul>
       <h2>Principe :</h2>
-      <p>Le tri par selection est un algorithme de tri tres simple qui consiste à chercher
-        le plus pétit element du tableau, le remplacer avec l'element a l'indice zero, recommencer
-        l'operation mais cette fois si en remplacant le plus petit element avec l'element a l'indice un et ainsi de suite.
+      <p>Le tri par selection est un algorithme de tri très simple qui consiste à chercher <br>
+        le plus pétit element du tableau, le remplacer avec l'element a l'indice zero, <br>
+        recommencer l'operation mais cette fois si en remplacant le plus petit element avec <br>
+        l'element a l'indice un et ainsi de suite.
       </p>
-      <h2>algorithme :</h2>
-      <p>
+      <h2>Algorithme :</h2>
+
       <pre>
               procédure tri_selection(tableau t) <br>
               n ← longueur(t) <br>
@@ -50,15 +57,15 @@
                 si min ≠ i, alors échanger t[i] et t[min] <br>
                 fin pour <br>
               fin procédure<br>
-        
-            </pre>
-    
-    </div>
- </div>
-  
-  
 
-  </p>
+            </pre>
+
+    </div>
+  </section>
+
+
+
+
 
 
 

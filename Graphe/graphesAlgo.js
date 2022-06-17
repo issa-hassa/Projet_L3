@@ -1,4 +1,4 @@
-/// <reference path="/Users/ahmed-korom/Desktop/TSDef/p5.global-mode.d.ts" />
+
 
 let noeuds = [];
 let arcs = [];
@@ -62,14 +62,9 @@ function setup(){
     fermerACM = false;
     fermerBFS = false;
     if(grapheE != null){
-        
         graphe = utilitaire.jsonToGraphe(grapheE);
         if(graphe.noeuds.length !==0) nbNoeud = utilitaire.max(graphe.noeuds) + 1
-        else{
-            nbNoeud = 0;
-        }
-
-       
+        else nbNoeud = 0;  
     }
     else {graphe = new Graphe();nbNoeud = 0}
    
@@ -80,19 +75,14 @@ function setup(){
     butFermerDFS = createButton('Fermer');
     butFermerBFS = createButton('Fermer');
     butFermerACM = createButton('Fermer');
-
     butFermerDFS.parent("buttonFermer1");
     butFermerBFS.parent("buttonFermer2");
     butFermerACM.parent("buttonFermer3");
-
+    butFermerDFS.position(width-130,height+350);
+    butFermerBFS.position(width-130,height+350);
+    butFermerACM.position(width-130,height+350);
     canvasDiv = select('#p5');
-    
-    
     oriented.changed(changeType);
-    //oriented.style('position','relative');
-    //oriented.position(width-50,height+50);
-    
-    
     nbclicked = 0;
     button = false;
     element = document.getElementById('text');
@@ -106,9 +96,6 @@ function setup(){
     DFSdivP5.position(windowWidth/2 + 20,100);
     BFSdivP5.position(windowWidth/2 + 20,100);
     ACMdivP5.position(windowWidth/2 + 20,100);
-    
-   // choixAlgo.innerHTML = "choisir un DFSdiv: ";
-
     butFermerDFS.mousePressed(function(){fermerDFS = true; DFSdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
     butFermerBFS.mousePressed(function(){fermerBFS = true; BFSdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
     butFermerACM.mousePressed(function(){fermerACM = true; ACMdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
@@ -130,19 +117,9 @@ function setup(){
     enregisterBut.position(width-(2*offSet +20),height+2);
     supprimer.position(width-(3*offSet +35),height+2);
     buttonReinitialiser.position(width-(4*offSet +60),height+2);
-  //  DFSdivP5.position(0,height+100);
-  //  DFSdiv.style.display ='none';
-   // BFSdivP5.position(0,height+100);
-   // BFSdiv.style.display ='none';
-    //ACMdivP5.position(0,height+100);
-   // ACMdiv.style.display ='none';
     fi = new priorityQueue();
     let  i = 0;
     j = 0;
-    // bpF = createButton("Parcours en profondeur");
-    // bpL = createButton("Parcours en Largeur");
-    // bAC = createButton("Arbre couvrant");
-    
     selectMenu = createSelect();
     selectMenu.parent('p5');
     selectMenu.option("Choisir un algorithme :")
@@ -150,23 +127,16 @@ function setup(){
     selectMenu.option('Parcours en largeur');
     selectMenu.option('Arbre couvrant');
     selectMenu.option('Bipartie?');
-    selectMenu.option('Connexe?');
     selectMenu.mousePressed(showDivs);
     choixAlgo = createP();
-    choixAlgo.parent('p5');
-     
+    choixAlgo.parent('p5'); 
     type = createP("orienté ?");
     type.parent('p5');
     oriented.position(width - 20,-20);
     selectMenu.position(0,-20);
     choixAlgo.position(0,-35);
     type.position(width - 80,-35)
-
     enregisterBut.mousePressed(function(){utilitaire.enregistrerGraphe()});
-
-
-    
-   
     buttonReinitialiser.mousePressed(function(){
         utilitaire.reinitialiser(graphe);
     })
@@ -184,21 +154,6 @@ function setup(){
                                 }
                     
                                 break;
-            case 'Connexe?' : parcoursEnLargeur(graphe,graphe.noeuds[0]);
-                                let con = true;
-                              for (const n of graphe.noeuds) {
-                                     if(!n.marquer){ con = false;}
-                                     else{
-                                    n.marquer = false;
-                                }
-                                if(con){
-                                element.innerHTML = "Le graphe est connexe"
-                                }
-                                else{
-                                element.innerHTML = "Le graphe n'est pas connexe"
-                                }
-
-    }
             
         }
 
@@ -210,18 +165,10 @@ function setup(){
     n = 0;
     positionCercle = new vecteur(0,0);
     naff = 1;
-     //______________________Style___________________________________//
-    c.style('display','block');
-   
-   // c.style('border-style','groove');
-   // c.style('border','10px');
- 
-   
+    c.style('display','block');   
     canvasDiv.style('position','absolute');
     canvasDiv.position(windowWidth/2 - width/2,100);
-   // c.position(windowWidth/2,0);
-    //check = createCheckbox('Arbre couvrant',false);
-    //_______________________________________________________________//
+
 
 }
 
@@ -375,8 +322,6 @@ function parcoursEnProfondeur(graphe,aff){
         }
        
     }
-    
-    
     positionCercle = new vecteur(res[0].vecteur.x,res[0].vecteur.y);
     
     res[0].changeCouleur = true;
@@ -408,23 +353,20 @@ function explorer(graphe,s,so,res,aff){
             res.push(s);
             res.push(a.noeud1);
             explorer(graphe,a.noeud1,s,res,aff);
-            
-
-        }
-        else{
+        }else {
             res.push(s);
         }
         
         
     }
-    if(!t &&  so != undefined)  res.push(so);
+    if(!t && (so != undefined)) res.push(so);
    
 
 
 }
 
 function parcoursEnLargeur(g,s){
-    element.innerHTML = "La liste des noeuds du parcours en largeur  :";
+    element.innerHTML = "La liste des noeuds du parcours en largeur  : ";
     
     let file = [];
     let res = [];
@@ -523,7 +465,7 @@ function prims(g,s){
     let t  = f.dequeueFunction();
     while(t != null){
         
-        let voisin = te.noeudsVoisin(g);
+        let voisin = t.noudsVoisin(g);
         for (const u of voisin) {
            
             let tu = g.getArc(t,u);
@@ -632,7 +574,7 @@ function estbipatie(g,s){
     r.push(s);
     while(r.length !== 0){
         let n1 = r.shift();
-        for (const n2 of n1.noeudsVoisin(g)) {
+        for (const n2 of n1.noudsVoisin(g)) {
             if(n2.cBip === undefined){
                 n2.cBip =(n1.cBip == 0)?1 : 0;
                 r.push(n2);

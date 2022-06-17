@@ -4,10 +4,11 @@
 
 ## Table of Contents
 
-1. [information generale](#general-info)
+1. [Introduction](#general-info)
 2. [Technologies](#technologies)
 3. [Installation](#installation)
 4. [Utilisation](#Utilisation)
+5. [Auteurs](#Utilisation)
 
 ### information generale
 
@@ -57,3 +58,10 @@ On peut commencer à utiliser AlgoSoupe en ouvarant   l'un des pages du site (we
   ![setPoids](images/supPoids.gif)
 - #### On peut selectionner plusieurs arcs et leurs attribués le meme poids
   ![poids+](images/poids%2B.gif)
+
+## Auteurs :
+
+Issa Hassan Fadoul : hassan-fadoul.issa@etudiant.univ-rennes1.fr
+Guermouche Asama : asma.guermouche@etudiant.univ-rennes1.fr
+Aiman Aouad : aiman.aouad@etudiant.univ-rennes1.fr
+Gulizar Agayeva : gulizar.agayeva@etudiant.univ-rennes1.fr

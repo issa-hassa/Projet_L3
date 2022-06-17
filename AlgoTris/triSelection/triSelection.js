@@ -1,4 +1,4 @@
-/// <reference path="/Users/ahmed-korom/Desktop/TSDef/p5.global-mode.d.ts" />
+
 let barres = [];
 let largeur = 20;
 let n;
@@ -13,9 +13,9 @@ function setup(){//Math.max(document.documentElement.clientWidth,window.innerWid
   //c.position('0','0','fixed');
   c.parent('canvas');
   background(0);
-  b = createButton("recommencer");
+  /*b = createButton("recommencer");
   b.mousePressed(init);
-  b.parent('canvas');
+  b.parent('canvas');*/
 
  for (let i = 0; i <= n; i++) {
     barres.push(new Barre(i*largeur,random(height)));
@@ -61,6 +61,7 @@ function draw(){
       j++;
     }
     else{
+     
       let temp =  barres[i].h;
       barres[i].h = barres[index].h;
       barres[index].h= temp;
@@ -73,7 +74,7 @@ function draw(){
      
 
     
-  }
+  }else init();
 }
 class Barre{
     constructor(x,h){
@@ -94,7 +95,7 @@ class Barre{
         let dir = createVector(this.x - b.x,0);
         dir.normalize();
         this.x -= dir.x;
-        console.log(dir.x === 0);
+       
         return dir.x === 0;
     }
     desc(){
@@ -119,11 +120,11 @@ class Barre{
 
 
 function init(){
-     for (let i = 0; i <= n; i++) {
-    barres.push(new Barre(i*largeur,random(height)));
- }
-  i = 0;
-  j = 1;
-  index = 0;
+    for (let i = 0; i <= n; i++) {
+      barres.push(new Barre(i*largeur,random(height)));
+  }
+    i = 0;
+    j = 1;
+    index = 0;
 
 }

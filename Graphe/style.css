@@ -18,6 +18,14 @@ body {
 
 }
 
+.p5 button:hover {
+    /*opacity: 0.6;*/
+    transition: 0.9s;
+    background-color: rgb(53, 53, 78);
+    color: #04AA6D;
+    ;
+}
+
 .p5 input {
     padding: 3px;
 
@@ -45,4 +53,39 @@ body {
 .showAlgo li:hover {
     color: #04AA6D;
 
+}
+
+.algo {
+
+    float: right;
+    overflow: scroll;
+    height: 60%;
+    width: 45%;
+    border: solid;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.algo h1 {
+    color: white;
+    text-align: center;
+    background-color: rgb(72, 72, 97);
+    display: block;
+    padding-top: 10px;
+}
+
+.buttonFermer button {
+    cursor: pointer;
+    position: absolute;
+    border: none;
+    padding: 8px;
+    color: white;
+    background-color: #04AA6D;
+}
+
+.buttonFermer button:hover {
+    opacity: 0.6;
+    transition: 0.9s;
 }
