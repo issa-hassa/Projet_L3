@@ -150,6 +150,7 @@ function setup(){
     selectMenu.option('Parcours en largeur');
     selectMenu.option('Arbre couvrant');
     selectMenu.option('Bipartie?');
+    selectMenu.option('Connexe?');
     selectMenu.mousePressed(showDivs);
     choixAlgo = createP();
     choixAlgo.parent('p5');
@@ -183,6 +184,21 @@ function setup(){
                                 }
                     
                                 break;
+            case 'Connexe?' : parcoursEnLargeur(graphe,graphe.noeuds[0]);
+                                let con = true;
+                              for (const n of graphe.noeuds) {
+                                     if(!n.marquer){ con = false;}
+                                     else{
+                                    n.marquer = false;
+                                }
+                                if(con){
+                                element.innerHTML = "Le graphe est connexe"
+                                }
+                                else{
+                                element.innerHTML = "Le graphe n'est pas connexe"
+                                }
+
+    }
             
         }
 

@@ -672,3 +672,4 @@ Ce dernier est lui aussi un prefab, avec un seul gameObject qui comporte une col
 
 Pour ajouter une tourelle à notre projet, il faudrait donc créer un nouveau prefab inspiré de ceux existant, avec un gameObject pour la base, et un gameObject pour le canon, ce qui permet de faire tourner uniquement l’un des deux gameObject. Par la suite, il faut gérer tous les paramètres, si besoin créer un projectile adapté.
  Il faut ensuite le rajouter au shop en créant un nouveau bouton et l’ajouter au paramètre du script turretAdding de turretBuilder (objet gérant l’ajout des tourelles).
+

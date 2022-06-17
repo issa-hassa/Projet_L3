@@ -7,7 +7,7 @@ let butRes;
 let on;
 
 function setup() {
-    createCanvas(600, 600);
+    createCanvas(400, 400);
     but = createButton('Start/Stop');
     on = true;
     reset();
@@ -17,7 +17,7 @@ function setup() {
 
 }
 function reset(){
-  background(51);
+  background(255);
   on = false;
   stack = [];
   grid = [];
@@ -42,7 +42,7 @@ function start(){
 }
 
 function draw() {
-    frameRate(20);
+    frameRate(10);
    
     if(on){
       background(51);

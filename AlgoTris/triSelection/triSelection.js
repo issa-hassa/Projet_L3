@@ -61,7 +61,6 @@ function draw(){
       j++;
     }
     else{
-      console.log(barres[i]);
       let temp =  barres[i].h;
       barres[i].h = barres[index].h;
       barres[index].h= temp;
@@ -121,10 +120,10 @@ class Barre{
 
 function init(){
      for (let i = 0; i <= n; i++) {
-            barres[i] = (random(height));
-        }
-        i = 0;
-        index = i;
-        j = 1;
+    barres.push(new Barre(i*largeur,random(height)));
+ }
+  i = 0;
+  j = 1;
+  index = 0;
 
 }

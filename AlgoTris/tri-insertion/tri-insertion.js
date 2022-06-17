@@ -2,7 +2,7 @@ let tailles = [];
 let nbrBarres;
 let i;
 let j;
-let largeur = 60;
+let largeur = 20;
 let couleur ;
 let x1;
 let x2;
@@ -12,9 +12,11 @@ let p ;
 let ix1;
 let ix2;
 let z;
+let c;
 function setup(){
-    createCanvas(400,400);
-    //frameRate(5);
+    c = createCanvas(400,380);
+    frameRate(5);
+    c.parent("canvas");
     p = true;
 
     // nbrBarres =floor(width/(largeur2));
@@ -35,12 +37,12 @@ function draw(){
     if(i <= nbrBarres ){
         background(255);
         let x;
-        // if(i === nbrBarres + 1)  x = tailles[j].h;
+       
         {x =  tailles[i].h;}
 
 
 
-        //let c = tailles[j];
+      
 
         if( (j > 0 && tailles[j-1].h > x)){
            tailles[j].h = tailles[j -1].h;
@@ -64,9 +66,9 @@ function draw(){
 
         let l = 0;
         for (let b of tailles) {
-            fill(255,0,255);
-            if(l === j) fill(0,255,0);
-            if(l ===i) fill(255,0,0);
+             fill(51,100,100);
+            if(l === j) fill(255,0,0);
+            if(l ===i) fill(112,112,114);
             b.show();
             l++;
 

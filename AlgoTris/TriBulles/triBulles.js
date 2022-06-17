@@ -7,21 +7,19 @@ let couleur;
 let p;
 let m ;
 let b;
-//let couleur1;
+let c;
 
-function setup(){//Math.max(document.documentElement.clientWidth,window.innerWidth || 0),400
- createCanvas(400,400);
+
+function setup(){
+  c = createCanvas(400,400);
+  c.parent("canvas");
   n = width/largeur;
-  b = createButton("Recommencer");
-  b.mousePressed(init);
-  b.style("background-color",'#4CAF50');
-  //b.style()
+
   background(0);
   i = n;
 
  init();
  couleur = color(0,255,0);
- //couleur1 = color(52,150,90);
  p = false;
  b.mousePressed(init);
 }
@@ -50,46 +48,20 @@ function draw(){
                 barres[j + 1] = barres[j];
                 barres[j] = tmp1;
                 p = true;
-                // let tmp = couleur1
-                // couleur1 = couleur;
-                // couleur = tmp;
-                
-               
+
                 
             }
-            
-            
-            
-
-            
-       // }
-      //  i++;
-        
 
 
     }
-    else{
-        
-        
-       
-       
-        
-         
-       
-    }
+    else init();
     for (let l = 0; l < n; l++) {
-            //fill(52,150,90);
-           
-            stroke(52,150,90);
-            fill(51);
-            if(l == j && !p ) fill(couleur);
-            else if(l == j + 1 && p) fill(couleur);
+            
+            fill(51,100,100);
+            if(l == j+1  ) fill(255,0,0);
             rect(l*largeur,height - barres[l],largeur,barres[l]);
            
         }
-  /*rect(0,height - 50,20,50);
-  rect(20,height - 50,20,50);
-  rect(40,height - 50,20,50);*/
 }
 
   function windowResized(){
