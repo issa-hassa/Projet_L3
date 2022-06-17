@@ -16,6 +16,8 @@
 
 ## Diagramme de cas d'utilisation :
 
+![diagramCas](images/usecase_algoSoupe.png)
+
 ## Hierarchie du projet :
 
 Un fichier par type d'algorithme est la logique de notre arborescence, les algo

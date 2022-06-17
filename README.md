@@ -4,12 +4,12 @@
 
 ## Table of Contents
 
-1. [information general](#general-info)
+1. [information generale](#general-info)
 2. [Technologies](#technologies)
 3. [Installation](#installation)
 4. [Utilisation](#Utilisation)
 
-### General Info
+### information generale
 
 ---
 
