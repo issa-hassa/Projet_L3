@@ -1,92 +1,98 @@
+![logo](images/logo.png);
+
 # AlgoSoupe
 
+## Table of Contents
 
+1. [information general](#general-info)
+2. [Technologies](#technologies)
+3. [Installation](#installation)
+4. [Utilisation](#Utilisation)
+5. [Collaboration](#collaboration)
+6. [FAQs](#faqs)
 
-## Getting started
+### General Info
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+---
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Nous avons choisit de faire ce projet dans le but d'aider les étudiant à mieu comprendre les algorithmes
 
-## Add your files
+### Screenshot
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+![Image text](https://www.united-internet.de/fileadmin/user_upload/Brands/Downloads/Logo_IONOS_by.jpg)
 
-```
-cd existing_repo
-git remote add origin https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe.git
-git branch -M main
-git push -uf origin main
-```
+## Technologies
 
-## Integrate with your tools
+---
 
-- [ ] [Set up project integrations](https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe/-/settings/integrations)
+A list of technologies used within the project:
 
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+- [JavaScript](https://example.com): Version 12.3
+- [Html](https://example.com): Version 2.34
+- [Css](https://example.com): Version 1234
+- [p5.js](https://example.com): Version 1234
+- [circular.js](https://example.com): Version 1234
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+---
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+A little intro about the installation.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+```
+$ git clone https://example.com
+$ cd ../path/to/the/file
+$ npm install
+$ npm start
+```
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+Side information: To use the application in a special environment use `lorem ipsum` to start
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Utilisation
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Pour le dessin du graphe : on va tout d'abord sur la page graphe du site:
+![pageGraphe](images/algoPage.png)
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+- on appuit une fois pour ajouter un noeud.
+  [ajoutNoeud](images/ajoutNoeud.gif)
+- on peut clicker sur un noeud pour le selectionner, clicker sur le boutton supprimer pour le supprimer. En supprimant un noeud on supprime aussi tous les arcs liés à ce neoud.
+  [ajoutNoeud](images/ajoutNoeud.gif)
+  [supNoeud](images/supNoeud.gif)
+- une fois un noeud selectionner on peut selectionner un autre noeud pour créer un arc entre les deux.
+  [creerArc](images/ajoutArc.gif)
+- On peut selectionner un arc soit pour le supprimer soit pour ajouter un poids, une fois qu'on ajoute un poids à un arc le graphe sera considéré comme étant pondéré et tous les autres arcs auront la valeur zero comme poids.
+  [setPoids](images/supPoids.gif)
+- On peut selectionner plusieurs arcs et leurs attribués le meme poids
+  [poids+](images/poids%2B.gif)
 
-## License
-For open source projects, say how it is licensed.
+## Collaboration
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+---
+
+Give instructions on how to collaborate with your project.
+
+> Maybe you want to write a quote in this part.
+> Should it encompass several lines?
+> This is how you do it.
+
+## FAQs
+
+---
+
+A list of frequently asked questions
+
+1. **This is a question in bold**
+   Answer to the first question with _italic words_.
+2. **Second question in bold**
+   To answer this question, we use an unordered list:
+
+- First point
+- Second Point
+- Third point
+
+3. **Third question in bold**
+   Answer to the third question with _italic words_.
+4. **Fourth question in bold**
+   | Headline 1 in the tablehead | Headline 2 in the tablehead | Headline 3 in the tablehead |
+   |:--------------|:-------------:|--------------:|
+   | text-align left | text-align center | text-align right |
