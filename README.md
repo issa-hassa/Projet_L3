@@ -13,8 +13,8 @@
 
 ---
 
-Nous avons choisit de faire ce projet dans le but d'aider les étudiant à mieu comprendre les algorithmes.
-AlgoSoupe contient des visulisation des algorithmes enseignés dans les modules algorithmiques des graphes et algorithimique à l'istic. Il contient aussi une page sur laquelle on peut dessiner un graphe et appliquer des algorithmes sur ce dernier.
+Nous avons choisit de faire ce projet dans le but d'aider les étudiant à mieux comprendre les algorithmes.
+AlgoSoupe contient des visualisations des algorithmes utilisés dans les modules MAG(algorithmiques des graphes) et ALG2 (algorithimique) enseignés en troisième année à l'istic. Il contient aussi une page sur laquelle on peut dessiner un graphe et appliquer des algorithmes sur ce dernier.
 L'execution de l'algorithme sera detaillé pas à pas sur le graphe dessiné par l'utilisateur.
 On peut aussi recuperer le graphe sous forme d'une image png.
 
@@ -32,10 +32,10 @@ On peut aussi recuperer le graphe sous forme d'une image png.
 
 ---
 
-On peut acceder au projet de la maniere suivante :
+On peut acceder au projet de la manière suivante :
 
 ```
-$ git clone https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe.git ou telecharger directement le projet ici [](https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe/-/archive/master/algosoupe-master.zip)
+$ git clone https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe.git ou telecharger directement le projet  ![ici](https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe/-/archive/master/algosoupe-master.zip)
 
 On peut commencer à utiliser AlgoSoupe en ouvarant   l'un des pages du site (web.html,Algo.html ou graphe.html) dans un naviguateur.
 
