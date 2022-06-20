@@ -55,6 +55,7 @@ let fermerBFS;
 let butFermerACM;
 let fermerACM;
 let nbclicked;
+let selectValue;
 function setup(){
 
     let grapheE = localStorage.getItem("graphe");
@@ -122,7 +123,8 @@ function setup(){
     j = 0;
     selectMenu = createSelect();
     selectMenu.parent('p5');
-    selectMenu.option("Choisir un algorithme :")
+    selectMenu.option("Choisir un algorithme :");
+    selectValue = "Choisir un algorithme :";
     selectMenu.option('Parcours en profondeur');
     selectMenu.option('Parcours en largeur');
     selectMenu.option('Arbre couvrant');
@@ -147,9 +149,11 @@ function setup(){
             case 'Parcours en largeur' : res = parcoursEnLargeur(graphe,graphe.noeuds[0]);prof = new laser(res,'parcoursLargeur');break;
             case 'Arbre couvrant' : res = kruskal(graphe);prof = new laser(res,'Arbre couvrant'); break;
             case  'Bipartie?' : if(estbipatie(graphe,graphe.noeuds[0])){
+                                console.log(true);
                                 element.innerHTML = "Le graphe est bipartie"
                                 }
                                 else{
+                                    console.log(false);
                                 element.innerHTML = "Le graphe n'est pas bipartie"
                                 }
                     
@@ -218,18 +222,19 @@ function draw(){
 
 }
 function showDivs(){
-    ;
-    if(nbclicked === 1){
+    
+    if(selectMenu.value() !== selectMenu){
+    //    console.log(selectMenu.value());
+    //    console.log(selectValue);
         switch (selectMenu.value()){
             case 'Parcours en profondeur' : DFSdiv.style.display ='block';canvasDiv.position(0 ,100);break;
             case 'Parcours en largeur' :BFSdiv.style.display ='block';canvasDiv.position(0 ,100);break
             case 'Arbre couvrant' : ACMdiv.style.display ='block';canvasDiv.position(0 ,100);break;
-           
-        
         }
-        nbclicked = 0;
+        selectValue = selectMenu.value();
     }
-    nbclicked ++
+    
+   
 }
  /**
   * initialisation des valeurs pour les animations
@@ -562,6 +567,8 @@ function estbipatie(g,s){
         n.cBip = undefined;
     }
     parcoursEnLargeur(g,graphe.noeuds[0]);
+    element.innerHTML = "";
+   
     for (const n of g.noeuds) {
         if(!n.marquer){ alert("le graphe doit etre connexe");return}
         else{
@@ -574,7 +581,7 @@ function estbipatie(g,s){
     r.push(s);
     while(r.length !== 0){
         let n1 = r.shift();
-        for (const n2 of n1.noudsVoisin(g)) {
+        for (const n2 of n1.noeudsVoisin(g)) {
             if(n2.cBip === undefined){
                 n2.cBip =(n1.cBip == 0)?1 : 0;
                 r.push(n2);
