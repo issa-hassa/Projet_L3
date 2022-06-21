@@ -97,9 +97,9 @@ function setup(){
     DFSdivP5.position(windowWidth/2 + 20,100);
     BFSdivP5.position(windowWidth/2 + 20,100);
     ACMdivP5.position(windowWidth/2 + 20,100);
-    butFermerDFS.mousePressed(function(){fermerDFS = true; DFSdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
-    butFermerBFS.mousePressed(function(){fermerBFS = true; BFSdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
-    butFermerACM.mousePressed(function(){fermerACM = true; ACMdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
+    butFermerDFS.mouseClicked(function(){fermerDFS = true; DFSdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
+    butFermerBFS.mouseClicked(function(){fermerBFS = true; BFSdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
+    butFermerACM.mouseClicked(function(){fermerACM = true; ACMdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
     entreePoid = createInput("poids","text");
     buttonPoid = createButton("ok");
     entreePoid.parent("poids");
@@ -109,7 +109,7 @@ function setup(){
     enregisterBut.parent('p5');
     executer.parent('p5');
     supprimer = createButton('Supprimer');
-    supprimer.mousePressed(function(){graphe.supprimer()});
+    supprimer.mouseClicked(function(){graphe.supprimer()});
     supprimer.parent('p5');
     buttonReinitialiser = createButton("Reinitialiser");
     buttonReinitialiser.parent("p5");
@@ -218,12 +218,14 @@ function draw(){
         DFSdiv.style.display ='none';
         canvasDiv.position(windowWidth/2 - width/2,100);
     }
- 
+    // if(selectMenu.value() != selectValue){
+    //     selectValue = selectMenu.value();
+    // }
 
 }
 function showDivs(){
     
-    if(selectMenu.value() !== selectMenu){
+    //if(selectMenu.value() == selectMenu){
     //    console.log(selectMenu.value());
     //    console.log(selectValue);
         switch (selectMenu.value()){
@@ -231,8 +233,9 @@ function showDivs(){
             case 'Parcours en largeur' :BFSdiv.style.display ='block';canvasDiv.position(0 ,100);break
             case 'Arbre couvrant' : ACMdiv.style.display ='block';canvasDiv.position(0 ,100);break;
         }
-        selectValue = selectMenu.value();
-    }
+        
+   // }
+    selectValue = selectMenu.value();
     
    
 }

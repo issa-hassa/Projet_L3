@@ -43,7 +43,7 @@ function genere(){
     phrase =  nouvelPhrase;
     
     let p = createP(phrase);
-    p.parent("textL");
+    p.parent("textL1");
     lsys(phrase, len);
      len*=0.6;   
 

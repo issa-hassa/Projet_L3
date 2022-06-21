@@ -48,28 +48,28 @@
     <div class="algo" id="algoDFS">
         <div class="alg">
             <h1>Parcours en profondeur</h1>
-            Le parcours en profondeur est un algorithme de parcours d'un grahpe <br>
-            L'algorithme commence tout d'abord par un noeud queleconque le marque comme étant <strong> visité</strong>
+            Le parcours en profondeur est un algorithme de parcours d'un graphe <br>
+            L'algorithme commence tout d'abord par un nœud quelconque le marque comme étant <strong> visité</strong>
             <br>,
-            ensuite parmi les voisins du noeuds courant on choisit un noeud queleconque non visité, et on repéte <br>
+            ensuite parmi les voisins du nœuds courant on choisit un nœud quelconque non visité, et on répète <br>
             jusqu'à ce qu'on tombe sur cul-de-sac et dans ce cas on revient sur nos pas
             (<strong>backtracking</strong>).<br>
-            A cause de la nature recursive de l'algorithme une pile peut étre utiliser pour l'implementer, le procesus
+            A cause de la nature récursive de l'algorithme une pile peut être utiliser pour l'implémenter, le processus
             de
-            l'implementation<br>
-            du parcours en pronfondeur est similaire à celui du parcours en largeur:<br>
-
-            &ensp; 1. Creér une pile vide.<br>
-            &ensp; 2. Choisir un noeud queleconque comme point de depart de l'algorithme et l'ajouter dans la pile.<br>
-            &ensp; 3. Ajouter un noeud non visité adjacent au noeud courant à la tete de la pile et le marquer comme
-            etant
+            l'implémentation<br>
+            du parcours en profondeur est similaire à celui du parcours en largeur:<br>
+            
+            &ensp; 1. Créer une pile vide.<br>
+            &ensp; 2. Choisir un nœud quelconque comme point de départ de l'algorithme et l'ajouter dans la pile.<br>
+            &ensp; 3. Ajouter un nœud non visité adjacent au nœud courant à la tête de la pile et le marquer comme
+            étant
             visité.<br>
-            &ensp; 4. Repeter 3 jusqu'à ce qu'il n'y est plus de noeud à visiter à partir du noeud courant (le noeud à
-            la tete
+            &ensp; 4. Répéter 3 jusqu'à ce qu'il n'y est plus de nœud à visiter à partir du nœud courant (le nœud à
+            la tête
             de la pile).<br>
-            &ensp; 5. S'il reste aucun neoud, retirer le noeud à la tete de la pile.<br>
+            &ensp; 5. S'il reste aucun nœud, retirer le nœud à la tête de la pile.<br>
             &ensp; 6. Repeter 2,3 et 4 jusqu'à ce que la pile soit vide.<br>
-
+            
             <h4>l'algorithme :</h4><br>
             &ensp;procedure DFS_iterative(G, v) is <br>
             &ensp;&ensp; let S be a stack<br>
@@ -83,6 +83,7 @@
 
 
 
+
         </div>
         <div class="buttonFermer" id="buttonFermer1"> </div>
     </div>
@@ -90,17 +91,17 @@
         <div>
 
             <h1>parcours en largeur</h1>
-            Le parcours en largeur est un algorithme de parcours d'un grahpe <br>
-            L'algorithme commence tout d'abord par un noeud queleconque le marque comme étant <strong> visité</strong>
+            Le parcours en largeur est un algorithme de parcours d'un graphe <br>
+            L'algorithme commence tout d'abord par un nœud quelconque le marque comme étant <strong> visité</strong>
             <br>,
-            ensuite on visite tous les voisins du noeuds courant non encore visité, et on repéte avec les voisin du
-            noeud
+            ensuite on visite tous les voisins du nœuds courant non encore visité, et on répète avec les voisin du
+            nœud
             courant: <br>
 
 
-            &ensp; 1. Creér une file vide.<br>
-            &ensp; 2. Choisir un noeud queleconque comme point de depart de l'algorithme et l'ajouter dans la file.<br>
-            &ensp; 3. Retirer le noeud du début de la file pour le traiter.<br>
+            &ensp; 1. Créer une file vide.<br>
+            &ensp; 2. Choisir un nœud quelconque comme point de départ de l'algorithme et l'ajouter dans la file.<br>
+            &ensp; 3. Retirer le nœud du début de la file pour le traiter.<br>
             &ensp; 4. Mettre tous ses voisins non explorés dans la file<br>
             &ensp; 5. Si la file n'est pas vide reprendre à l'étape 2.<br>
 
@@ -125,27 +126,26 @@
     <div class="algo" id="ACM">
         <div>
             <h1>Arbre couvrant minimum</h1>
-            Etant donnée un graphe connexe non orienté, un arbre couvrant de ce graphe est un arbre( un graphe connexe
+            Étant donnée un graphe connexe non orienté, un arbre couvrant de ce graphe est un arbre (un graphe connexe
             et
-            acyclique )<br>
-            qui connecte tous les noeuds. Un grahpe peut avoir plusieurs arbres couvrants.<strong>Un abre couvrant de
-                poids
-                minimum</strong><br>
-            pour un graphe ponderé, connexe, et non orienté est un arbre couvrant ayant un poids plus pétit ou egal au
+            acyclique)<br>
+            qui connecte tous les nœuds. Un graphe peut avoir plusieurs arbres couvrants.<strong> Un abre couvrant de
+            poids minimum</strong><br>
+            pour un graphe pondéré, connexe, et non orienté est un arbre couvrant ayant un poids plus petit ou égal au
             poids de
             chaque arbre<br>
             couvrant possible du graphe.<br>
-            Plusieurs algorithmes peuvent etre utiliser pour avoir l'ACM d'un graphe (algorithme de Boruvka,
+            Plusieurs algorithmes peuvent être utiliser pour avoir l'ACM d'un graphe (algorithme de Boruvka,
             l'algorithme de
             Prim, l'algorithme de Kruskal),<br>
             nous utiliserons l'algorithme de Kruskal.<br>
             <h4>Kruskal</h4><br>
-            L'algorithme de Kruskal fonctionne de la maniere suivante :<br>
-            &ensp;&ensp; 1.Trier toules arcs du grahpe dans l'ordre croissant du poids.<br>
+            L'algorithme de Kruskal fonctionne de la manière suivante :<br>
+            &ensp;&ensp; 1.Trier tous les arcs du graphe dans l'ordre croissant du poids.<br>
             &ensp;&ensp; 2.Prendre l'arc avec le plus petit poids et l'ajouter dans l'ACM si cet arc ne forme pas de
             cycle<br>
-            &ensp;&ensp; (On fait cette verification avec une structure de données Union-Find) dans l'ACM<br>
-            &ensp;&ensp; 3. Repeter l'étape 2 pour tous les arcs du graphe. <br>
+            &ensp;&ensp; (effectue cette vérification avec une structure de données Union-Find) dans l'ACM<br>
+            &ensp;&ensp; 3. Répéter l'étape 2 pour tous les arcs du graphe. <br>
             <h5>Algorithme :</h5><br>
             Kruskal(G) :<br>
             1 &ensp;A := ø<br>

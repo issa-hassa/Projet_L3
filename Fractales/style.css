@@ -10,6 +10,18 @@
  margin-right: 10px;
  margin-top: 20px;
 }
+.textL1 {
+
+    float: right;
+    overflow: scroll;
+    height: 70%;
+    width: 45%;
+    border: solid;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+}
     
 .canvas {
      height: 100%;
