@@ -37,7 +37,7 @@ function genere(){
     phrase =  nouvelPhrase;
     
     let p = createP(phrase);
-    p.parent("textL");
+    p.parent("textL1");
     lsys(phrase, len,(150,85 + colore*1.75,colore+=2));
     len *=0.55; 
 

@@ -10,7 +10,7 @@ let canvas;
 function setup() {
     canvas = createCanvas(500, 470);
     canvas.parent("canvas1");
-    but = createButton('Start / Stop');
+    but = createButton('Start/Stop');
     but.parent("but");
     on = true;
     reset();

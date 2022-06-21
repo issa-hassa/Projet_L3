@@ -1,4 +1,4 @@
-.textL{
+.algoE{
     
   float: right;
  overflow: scroll;
@@ -43,3 +43,11 @@
      opacity: 0.6;
      transition: 0.9s;
  }
+h1,h3 {
+    color: white;
+    text-align: center;
+    background-color: rgb(72, 72, 97);
+    display: block;
+    padding-top: 10px;
+
+}

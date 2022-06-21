@@ -47,7 +47,7 @@ h1 {
 
 .but button {
     cursor: pointer;
-    position: absolute;
+    /* position: absolute; */
     /* border: none; */
     /* padding: 8px; */
     color: white;
