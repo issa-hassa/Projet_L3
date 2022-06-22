@@ -18,6 +18,10 @@
 Nous avons choisi de faire ce projet dans le but d'aider les futurs étudiants de la L3 informatique à mieux comprendre les algorithmes vus lors de nos modules.
 AlgoSoupe contient des visualisations des algorithmes utilisés dans les modules MAG (algorithmiques des graphes) et ALG2 (algorithmique) enseignés en troisième année à l'ISTIC. Il contient aussi une page sur laquelle on peut dessiner un graphe et appliquer des algorithmes sur ce dernier. L'exécution de l'algorithme sera détaillée pas à pas sur le graphe dessiné par l'utilisateur. Par ailleurs, on peut récupérer le graphe sous la forme d'une image png..
 
+## Video de présentation
+
+https://www.youtube.com/watch?v=gMZz6K70meg
+
 ## Technologies
 
 ---

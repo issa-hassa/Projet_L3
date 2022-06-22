@@ -56,6 +56,7 @@ let butFermerACM;
 let fermerACM;
 let nbclicked;
 let selectValue;
+let butSuppGraphe;
 function setup(){
 
     let grapheE = localStorage.getItem("graphe");
@@ -110,6 +111,9 @@ function setup(){
     executer.parent('p5');
     supprimer = createButton('Supprimer');
     supprimer.mouseClicked(function(){graphe.supprimer()});
+    butSuppGraphe = createButton('supprimer le graphe');
+    butSuppGraphe.parent('p5');
+    butSuppGraphe.mouseClicked(function(){graphe = new Graphe(); nbNoeud = 0;});
     supprimer.parent('p5');
     buttonReinitialiser = createButton("Reinitialiser");
     buttonReinitialiser.parent("p5");
@@ -118,6 +122,7 @@ function setup(){
     enregisterBut.position(width-(2*offSet +20),height+2);
     supprimer.position(width-(3*offSet +35),height+2);
     buttonReinitialiser.position(width-(4*offSet +60),height+2);
+    butSuppGraphe.position(width-(6*offSet +70),height+2);
     fi = new priorityQueue();
     let  i = 0;
     j = 0;
@@ -410,6 +415,7 @@ function windowResized(){
     enregisterBut.position(width-(2*offSet +20),height+2);
     supprimer.position(width-(3*offSet +35),height+2);
     buttonReinitialiser.position(width-(4*offSet +60),height+2);
+    butSuppGraphe.position(width-(6*offSet +70),height+2);
     canvasDiv.position(windowWidth/2 - width/2,100);
     selectMenu.position(0,-20);
     choixAlgo.position(0,-35);

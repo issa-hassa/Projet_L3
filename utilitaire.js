@@ -126,6 +126,7 @@ utilitaire.contient= function(tab,val){
 utilitaire.memeArcNonOriente = function(a1,a2){
     return (a1.noeud1 == a2.noeud1 || a1.noeud1 == a2.noeud2) &&(a1.noeud2 == a2.noeud2 || a1.noeud2 == a2.noeud1);
 };
+
 utilitaire.max = function(tab){
    return  tab.reduce(function(a,b){
             return (a.value > b.value ? a.value : b.value)
