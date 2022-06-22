@@ -2,14 +2,15 @@
 
 # AlgoSoupe
 
-## Table of Contents
+## Sommaire
 
-1. [Introduction](#general-info)
-2. [Technologies](#technologies)
-3. [Installation](#installation)
-4. [Utilisation](#Utilisation)
-5. [Fonctionalités à ajouter](#Auteurs)
-6. [Auteurs](#Utilisation)
+1. [Introduction](#Introduction)
+2. [Video de présentation](#video-de-présentation)
+3. [Technologies](#technologies)
+4. [Installation](#installation)
+5. [Utilisation](#Utilisation)
+6. [Fonctionalités à ajouter](#Auteurs)
+7. [Auteurs](#Utilisation)
 
 ## Introduction
 
