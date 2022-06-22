@@ -56,7 +56,7 @@ On peut commencer à utiliser AlgoSoupe en ouvarant   l'un des pages du site (we
   ![ajoutNoeud](images/ajouterNOEUD.gif)
 - #### on peut clicker sur un noeud pour le selectionner, clicker sur le boutton supprimer pour le supprimer. En supprimant un noeud on supprime aussi tous les arcs liés à ce neoud.
   ![supNoeud](images/supNoeud.gif)
-- #### une fois un noeud selectionner on peut selectionner un autre noeud pour créer un arc entre les deux.
+- #### une fois un noeud selectionné on peut selectionner un autre noeud pour créer un arc entre les deux.
   ![creerArc](images/ajoutArc.gif)
 - #### On peut selectionner un arc soit pour le supprimer soit pour ajouter un poids, une fois qu'on ajoute un poids à un arc le graphe sera considéré comme étant pondéré et tous les autres arcs auront la valeur zero comme poids.
   ![setPoids](images/supPoids.gif)
