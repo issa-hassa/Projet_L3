@@ -25,13 +25,14 @@ class laser
         if(this.algo === "parcoursLargeur"){
             
             if(this.n < this.cibles.length){
-                this.cible.couleur(180);
-                for(const noeud of this.cible.noudsVoisin(graphe)){
-                   if(noeud.changeCouleur === false) noeud.couleur(102);
+                this.cible.couleur(102,204,0);
+                for(const noeud of this.cible.noeudsVoisin(graphe)){
+                   if(noeud.changeCouleur === false) noeud.couleur(0,204,204);
                 }
                 this.R -= 0.5;
                 if(this.R <=0){
                     this.R = 40;
+                    element.innerHTML +=" "+this.cible.value;
                     this.n++;
                     this.cible = this.cibles[this.n];
                    if(this.n < this.cibles.length)  this.position = createVector(this.cible.vecteur.x,this.cible.vecteur.y);

@@ -396,7 +396,7 @@ function parcoursEnLargeur(g,s){
 
     res[0].changeCouleur = true;
     positionCercle = new vecteur(res[0].vecteur.x,res[0].vecteur.y);
-    element.innerHTML += res[0].value ;
+    //element.innerHTML += res[0].value ;
    // console.log(res[0].value);
     return res;
 }

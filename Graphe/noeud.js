@@ -9,7 +9,9 @@ class Noeud{
         this.marquer = false;
         this.changeCouleur = false;
         this.vistieApartirDe = undefined;
-        this.color =  204;
+        this.r = 204;
+        this.g = 204;
+        this.b = 204;
         this.cBip = undefined;
         this.aff = false;
         
@@ -24,7 +26,7 @@ class Noeud{
        
         fill(51);
         stroke(255);
-        if(this.changeCouleur)fill(this.color);
+        if(this.changeCouleur)fill(this.r,this.g,this.b);
         if(this.select) fill(0,0,255);
         if(this.cBip === 0) fill(255,0,0);
         if(this.cBip === 1) fill(0,255,0);
@@ -54,9 +56,12 @@ class Noeud{
         }
         return voisins;
     }
-    couleur(c){
+    couleur(r,g,b){
         this.changeCouleur = true;
-        this.color = c;
+        this.r = r;
+        this.g = g;
+        this.b = b;
+       
     }
     clone(){
         let n = new Noeud(this.vecteur,this.select,this.value);
