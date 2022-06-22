@@ -11,7 +11,7 @@
 5. [Fonctionalités à ajouter](#Auteurs)
 6. [Auteurs](#Utilisation)
 
-### information generale
+## Introduction
 
 ---
 
