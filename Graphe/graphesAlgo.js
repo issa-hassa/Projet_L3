@@ -113,7 +113,7 @@ function setup(){
     supprimer.mouseClicked(function(){graphe.supprimer()});
     butSuppGraphe = createButton('supprimer le graphe');
     butSuppGraphe.parent('p5');
-    butSuppGraphe.mouseClicked(function(){graphe = new Graphe(); nbNoeud = 0;});
+    butSuppGraphe.mouseClicked(function(){graphe = new Graphe(); nbNoeud = 0;localStorage.removeItem('graphe')});
     supprimer.parent('p5');
     buttonReinitialiser = createButton("Reinitialiser");
     buttonReinitialiser.parent("p5");
