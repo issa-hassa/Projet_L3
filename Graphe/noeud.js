@@ -14,6 +14,7 @@ class Noeud{
         this.b = 204;
         this.cBip = undefined;
         this.aff = false;
+        this.numComp = 0;
         
         
        // this.couleur = undefined;
@@ -51,8 +52,9 @@ class Noeud{
     noeudsVoisin(g){
         let voisins = [];
         for (const a of g.arcs) {
+
             if(a.noeud1 === this  ) voisins.push(a.noeud2);
-            else if(a.noeud2 === this) voisins.push(a.noeud1);
+            else if(!g.oriente && a.noeud2 === this) voisins.push(a.noeud1);
         }
         return voisins;
     }

@@ -42,7 +42,7 @@ utilitaire.jsonToGraphe = function(g){
         
         
         resa.selectACM = a.selectACM;
-        resa.oriente = a.oriente;
+        resa.oriente = false;
         resa.possible = a.possible;
         res.arcs[i] = resa;  
     }
@@ -90,6 +90,7 @@ utilitaire.reinitialiser = function(g){
         noeud.changeCouleur = false;
         noeud.visteApartirDe = undefined;
         noeud.cBip = undefined;
+
     }
     element.innerHTML = "";
 };
@@ -130,6 +131,11 @@ utilitaire.memeArcNonOriente = function(a1,a2){
 utilitaire.max = function(tab){
    return  tab.reduce(function(a,b){
             return (a.value > b.value ? a.value : b.value)
+    })
+}
+utilitaire.maxComp = function(tab){
+   return  tab.reduce(function(a,b){
+            return (a.numComp > b.numComp ? a.numComp : b.numComp)
     })
 }
 

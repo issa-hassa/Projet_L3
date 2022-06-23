@@ -133,6 +133,7 @@ function setup(){
     selectMenu.option('Parcours en profondeur');
     selectMenu.option('Parcours en largeur');
     selectMenu.option('Arbre couvrant');
+    selectMenu.option('Composantes fortement connexe');
     selectMenu.option('Bipartie?');
     selectMenu.mousePressed(showDivs);
     choixAlgo = createP();
@@ -150,9 +151,9 @@ function setup(){
     executer.mousePressed(function(){
         init();
         switch(selectMenu.value()){
-            case 'Parcours en profondeur' : res = parcoursEnProfondeur(graphe,aff);prof = new laser(res);break;
-            case 'Parcours en largeur' : res = parcoursEnLargeur(graphe,graphe.noeuds[0]);prof = new laser(res,'parcoursLargeur');break;
-            case 'Arbre couvrant' : res = kruskal(graphe);prof = new laser(res,'Arbre couvrant'); break;
+            case 'Parcours en profondeur' :utilitaire.reinitialiser(graphe); res = parcoursEnProfondeur(graphe,aff);prof = new laser(res);break;
+            case 'Parcours en largeur' :utilitaire.reinitialiser(graphe); res = parcoursEnLargeur(graphe,graphe.noeuds[0]);prof = new laser(res,'parcoursLargeur');break;
+            case 'Arbre couvrant' :utilitaire.reinitialiser(graphe); res = kruskal(graphe);prof = new laser(res,'Arbre couvrant'); break;
             case  'Bipartie?' : if(estbipatie(graphe,graphe.noeuds[0])){
                                 console.log(true);
                                 element.innerHTML = "Le graphe est bipartie"
@@ -162,7 +163,8 @@ function setup(){
                                 element.innerHTML = "Le graphe n'est pas bipartie"
                                 }
                     
-                                break;
+                            break;
+            case 'Composantes fortement connexe' : utilitaire.reinitialiser(graphe); kosaraju(graphe);res =graphe.noeuds;  prof = new laser(res,"cfc");
             
         }
 
@@ -185,11 +187,11 @@ function draw(){
     //frameRate(1);
     background(44, 45, 66);
     graphe.show();
-    if(res !== undefined && res.length >0){
-        if(!arbeCouvrant){
-            prof.show();
-            prof.update();
-        }
+    if(res !== undefined   && res.length >0){
+        
+        prof.show();
+        prof.update();
+        
     }
     
     if(selectMenu.value() !== "Parcours en profondeur" ){
@@ -525,10 +527,51 @@ function Bellman_Ford(g,s){
     return pred;
 
 }
-function kosaraju(){
+
+
+function kosaraju(g){
+    if(!g.oriente){alert("un graphe non orienté est fortement connexe");return}
+    let transG = g.getTrans();
+    let numComposant = 0;
+    let s = [];
+    for (const n of g.noeuds) {
+        n.marquer = false;
+    }
+    for (const n of g.noeuds) {
+        if(!n.marquer){
+            cfcDFS1(n,s,g);
+        }
+    }
+    for (const n of g.noeuds) {
+        n.marquer = false;
+    }
+    while(s.length != 0){
+        let v = s.pop();
+        if(!v.marquer){
+            cfcDFS2(v,s,g,numComposant);
+            numComposant ++;
+        }
+        
+    }
 
 }
+function cfcDFS1(n,s,g){
+    n.marquer = true;
+    for (const noeud of n.noeudsVoisin(g)) {
+        if(!noeud.marquer) cfcDFS1(noeud,s,g);
+    }
+    s.push(n);
 
+}
+function cfcDFS2(n,s,g,numComposant){
+    n.numComp =  numComposant;
+    n.marquer = true;
+    for (const noeud of g.getTransSommet(n)) {
+        if(!noeud.marquer) cfcDFS2(noeud,s,g,numComposant);
+    }
+   
+
+}
 class vecteur extends p5.Vector {
     constructor(x,y){
         super(x,y);
@@ -540,12 +583,12 @@ class vecteur extends p5.Vector {
 
 
 
-class couleur extends p5.Color{
-    constructor(r,g,b){
-        super(r,g,b);
-        this._c = circular.register('Graphe');
-    }
-}
+// class couleur extends p5.Color{
+//     constructor(r,g,b){
+//         super(r,g,b);
+//         this._c = circular.register('Graphe');
+//     }
+// }
 
 function changeType() {
     if(this.checked()){

@@ -8,12 +8,13 @@ class laser
         this.R = 40;
         this.algo = algo;
         this.i = 0;
+        this.icouleur = 0;
         for (const no of cibles) {
             no.aff = false;
         }
     }
     show(){
-        if(this.algo != 'Arbre couvrant' && this.n < this.cibles.length){
+        if(this.algo != 'Arbre couvrant' && this.algo != 'cfc' && this.n < this.cibles.length){
             push();
             fill(51);
             circle(this.position.x,this.position.y,this.R); 
@@ -63,6 +64,30 @@ class laser
             else{
                 frameRate(60);
             }
+        }
+        else if(this.algo === "cfc"){
+            if(this.n < this.cibles.length){
+                let max = utilitaire.maxComp(this.cibles);
+                
+                let palet = new paletCouleur();
+                
+                if(this.i <= max) {
+                    if(this.icouleur < palet.couleurs.length ) {
+                        let couleur = palet.couleurs[this.icouleur];
+                    
+                        for (const n of this.cibles.filter(a => a.numComp === this.i)) {
+                            n.couleur(couleur.r,couleur.g,couleur.b);
+                        } 
+                        this.icouleur ++;
+                    }
+                    else{
+                        this.icouleur = 0;
+                    }
+                    this.i++;
+                    
+                }
+            }
+            
         }
         else{
             if(this.n < this.cibles.length){

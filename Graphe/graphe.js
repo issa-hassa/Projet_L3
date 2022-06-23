@@ -65,12 +65,22 @@ class Graphe{
             if(a.noeud1 == s ){
                 res.push(a.noeud2);
             } 
-            else  if(a.noeud2 == s ){
+            else  if(!this.oriente && a.noeud2 == s ){
                 res.push(a.noeud1);
             }
         }
         return res;
 
+    }
+    getTransSommet(s){
+        let res = [];
+        for(const a of this.arcs){
+            if(a.noeud2 == s){
+                res.push(a.noeud1);
+            }
+        }
+        return res;
+        
     }
     /**
      * Selection d'un noeud avec la souris
@@ -134,6 +144,8 @@ class Graphe{
             }
             if(arc.poids === undefined){ arc.poids = 0 }
         }
+
+        
     }
     getArc(n1,n2){
         for (const arc of this.arcs) {

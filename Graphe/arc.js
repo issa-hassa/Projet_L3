@@ -55,7 +55,7 @@ class arc{
      */
    selectArc(){
        /* utilistaion de la formule de Héron et celle de l'air d'un triangle pour calculer la 
-          la diste entre la souris et l'arc 
+          la distance entre la souris et l'arc 
        */
      let A = dist(this.noeud1.vecteur.x,this.noeud1.vecteur.y,mouseX,mouseY);
      let B = dist(this.noeud2.vecteur.x,this.noeud2.vecteur.y,mouseX,mouseY);   
