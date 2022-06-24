@@ -1,5 +1,5 @@
 
-
+/// <reference path ="../TSDef/p5.global-mode.d.ts" />
 let noeuds = [];
 let arcs = [];
 const NBMAX = 20;
@@ -48,12 +48,16 @@ let BFSdiv;
 let BFSdivP5;
 let ACMdiv;
 let ACMdivP5;
+let tableDiv;
+let tableDivP5;
 let butFermerDFS;
 let fermerDFS;
 let butFermerBFS;
 let fermerBFS;
 let butFermerACM;
+let butFermerTable;
 let fermerACM;
+let fermerTable;
 let nbclicked;
 let selectValue;
 let butSuppGraphe;
@@ -63,6 +67,7 @@ function setup(){
     fermerDFS = false;
     fermerACM = false;
     fermerBFS = false;
+    fermerTable = false;
     if(grapheE != null){
         graphe = utilitaire.jsonToGraphe(grapheE);
         if(graphe.noeuds.length !==0) nbNoeud = utilitaire.max(graphe.noeuds) + 1
@@ -71,18 +76,22 @@ function setup(){
     else {graphe = new Graphe();nbNoeud = 0}
    
     c = createCanvas(windowWidth*0.5,windowHeight*0.5);
+   
     c.parent("canvas");
     oriented = createCheckbox("",false);
     oriented.parent('p5');
     butFermerDFS = createButton('Fermer');
     butFermerBFS = createButton('Fermer');
     butFermerACM = createButton('Fermer');
+    butFermerTable = createButton('Fermer');
     butFermerDFS.parent("buttonFermer1");
     butFermerBFS.parent("buttonFermer2");
     butFermerACM.parent("buttonFermer3");
+    butFermerTable.parent("buttonFermer4");
     butFermerDFS.position(width-130,height+350);
     butFermerBFS.position(width-130,height+350);
     butFermerACM.position(width-130,height+350);
+    butFermerTable.position(width-130,height+350);
     canvasDiv = select('#p5');
     oriented.changed(changeType);
     nbclicked = 0;
@@ -93,14 +102,18 @@ function setup(){
     BFSdiv = document.getElementById("algoBFS");
     BFSdivP5 = select("#algoBFS");
     ACMdiv = document.getElementById("ACM");
+    tableDiv = document.getElementById("tableDiv");
     ACMdivP5 = select("#ACM");
+    tableDivP5 = select("#tableDiv");
     
     DFSdivP5.position(windowWidth/2 + 20,100);
     BFSdivP5.position(windowWidth/2 + 20,100);
     ACMdivP5.position(windowWidth/2 + 20,100);
-    butFermerDFS.mouseClicked(function(){fermerDFS = true; DFSdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
+    tableDivP5.position(windowWidth/2 + 20,100);
+    butFermerDFS.mouseClicked(function(){fermerDFS = !fermerDFS; DFSdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
     butFermerBFS.mouseClicked(function(){fermerBFS = true; BFSdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
     butFermerACM.mouseClicked(function(){fermerACM = true; ACMdiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
+    butFermerTable.mouseClicked(function(){fermerTable = true; tableDiv.style.display = 'none'; canvasDiv.position(windowWidth/2 - width/2,100); });
     entreePoid = createInput("poids","text");
     buttonPoid = createButton("ok");
     entreePoid.parent("poids");
@@ -123,6 +136,7 @@ function setup(){
     supprimer.position(width-(3*offSet +35),height+2);
     buttonReinitialiser.position(width-(4*offSet +60),height+2);
     butSuppGraphe.position(width-(6*offSet +70),height+2);
+ 
     fi = new priorityQueue();
     let  i = 0;
     j = 0;
@@ -135,6 +149,7 @@ function setup(){
     selectMenu.option('Arbre couvrant');
     selectMenu.option('Composantes fortement connexe');
     selectMenu.option('Bipartie?');
+    selectMenu.option("Matrice d'adjacence");
     selectMenu.mousePressed(showDivs);
     choixAlgo = createP();
     choixAlgo.parent('p5'); 
@@ -155,16 +170,17 @@ function setup(){
             case 'Parcours en largeur' :utilitaire.reinitialiser(graphe); res = parcoursEnLargeur(graphe,graphe.noeuds[0]);prof = new laser(res,'parcoursLargeur');break;
             case 'Arbre couvrant' :utilitaire.reinitialiser(graphe); res = kruskal(graphe);prof = new laser(res,'Arbre couvrant'); break;
             case  'Bipartie?' : if(estbipatie(graphe,graphe.noeuds[0])){
-                                console.log(true);
+                              
                                 element.innerHTML = "Le graphe est bipartie"
                                 }
                                 else{
-                                    console.log(false);
+                                   
                                 element.innerHTML = "Le graphe n'est pas bipartie"
                                 }
                     
                             break;
             case 'Composantes fortement connexe' : utilitaire.reinitialiser(graphe); kosaraju(graphe);res =graphe.noeuds;  prof = new laser(res,"cfc");
+            case "Matrice d'adjacence" : matriceAdj(graphe);break;
             
         }
 
@@ -198,7 +214,7 @@ function draw(){
         DFSdiv.style.display ='none';
         
     } 
-    else if(!fermerDFS){
+    else if(!fermerDFS && selectValue != selectMenu.value()){
         canvasDiv.position(0 ,100);
         
          DFSdiv.style.display ='block';
@@ -207,7 +223,7 @@ function draw(){
         BFSdiv.style.display ='none';
 
     } 
-    else if(!fermerBFS){
+    else if(!fermerBFS && selectValue != selectMenu.value()){
         canvasDiv.position(0 ,100);
         BFSdiv.style.display ='block';
     }
@@ -215,16 +231,28 @@ function draw(){
         
         ACMdiv.style.display ='none';
     } 
-    else if(!fermerACM){
+    else if(!fermerACM && selectValue != selectMenu.value()){
         canvasDiv.position(0 ,100);
         ACMdiv.style.display ='block';
+    }
+    if(selectMenu.value() !== "Matrice d'adjacence"){
+        
+        tableDiv.style.display ='none';
+    } 
+    else if(!fermerTable){
+        canvasDiv.position(0 ,100);
+        tableDiv.style.display ='block';
     }
     if(selectMenu.value() =="Choisir un algorithme :"){
         ACMdiv.style.display ='none';
         BFSdiv.style.display ='none';
         DFSdiv.style.display ='none';
+        tableDiv.style.display ='none';
         canvasDiv.position(windowWidth/2 - width/2,100);
     }
+    selectValue = selectMenu.value();
+
+
     // if(selectMenu.value() != selectValue){
     //     selectValue = selectMenu.value();
     // }
@@ -239,6 +267,7 @@ function showDivs(){
             case 'Parcours en profondeur' : DFSdiv.style.display ='block';canvasDiv.position(0 ,100);break;
             case 'Parcours en largeur' :BFSdiv.style.display ='block';canvasDiv.position(0 ,100);break
             case 'Arbre couvrant' : ACMdiv.style.display ='block';canvasDiv.position(0 ,100);break;
+            case "Matrice d'adjacence" : tableDiv.style.display ='block';canvasDiv.position(0 ,100);break;
         }
         
    // }
@@ -412,8 +441,12 @@ function parcoursEnLargeur(g,s){
 
 
 function windowResized(){
+    let diffX = (abs(width - windowWidth))/100;
+    let diffY = (abs(height - windowHeight))/100 
     resizeCanvas(windowWidth*0.5,windowHeight*0.5);
     executer.position(width-offSet,height+2);
+   
+    //executer.size(executer.size().width-executer.size().width*diffX*0.094,executer.size().height-executer.size().height*diffY*0.039);
     enregisterBut.position(width-(2*offSet +20),height+2);
     supprimer.position(width-(3*offSet +35),height+2);
     buttonReinitialiser.position(width-(4*offSet +60),height+2);
@@ -485,7 +518,7 @@ function prims(g,s){
         for (const u of voisin) {
            
             let tu = g.getArc(t,u);
-            console.log(tu);
+         
             if(tu !== undefined &&  f.contains(u)&& cout.get(u) >= tu.poids ){//&& f.contains(u)
                 pred.set(u,t);
                 cout.set(u,tu.poids);
@@ -501,7 +534,7 @@ function prims(g,s){
          if(key != null) res.push(key); 
         }
     );
-    console.log(pred);
+
     return res;
 
 }
@@ -644,6 +677,62 @@ function estbipatie(g,s){
         }
     }
     return true;
+
+
+}
+function matriceAdj(g){
+    let div = document.getElementById("table");
+    while(div.firstChild){
+        div.removeChild(div.firstChild);
+    }
+    let adj = g.getMatriceAdj();
+    let table = createElement('table');
+    let thead = createElement('thead');
+    let tbody = createElement('tbody');
+    let th;
+    let tr;
+    let td;
+    th = createElement('th');
+    
+    table.parent('table');
+    tbody.parent(table);
+    thead.parent(table);
+    //th.parent(table);
+    //thead.parent(table);
+    tr = createElement('tr');
+     th = createElement('th');
+    //th.html(" ");
+    th.parent(tr); 
+    tr.parent(thead);
+    tr.parent(tbody);
+    for (let i = 0; i < g.noeuds.length; i++) {
+        th = createElement('th');
+        th.html(""+i);
+        th.parent(tr); 
+    }
+   
+    for (let i = 0; i < g.noeuds.length; i++) {
+        tr = createElement('tr');
+        td = createElement('td');
+        td.html(""+i);
+        td.parent(tr);
+       
+        for (let j = 0; j < g.noeuds.length; j++) {
+            
+            
+            td = createElement('td');
+            td.html(""+ adj[i][j]);
+            td.parent(tr);
+           
+            
+        }
+         tr.parent(tbody);
+       
+        
+    }
+
+
+
 
 
 }

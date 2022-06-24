@@ -154,7 +154,7 @@ class Graphe{
                 return arc;
             }
             else if(this.oriente){
-                if((arc.noeud1 == n1 || arc.noeud1 == n2) && (arc.noeud2 == n2 || arc.noeud2 == n1));
+                if((arc.noeud1 == n1 ) && (arc.noeud2 == n2 )) return arc;
             }
 
         }
@@ -198,5 +198,23 @@ class Graphe{
         
         return Transgraphe;
     }
+    getMatriceAdj(){
+        let adj = Array.from(Array(this.noeuds.length),() => Array(this.noeuds.length));
+        for (let i = 0; i < this.noeuds.length; i++) {
+            for (let j = 0; j < this.noeuds.length; j++) {
+                let arc = this.getArc(this.noeuds[i],this.noeuds[j]);
+                if(arc !== undefined){
+                    adj[i][j] = 1;
+                }
+                else{
+                     adj[i][j] =0;
+                }
+
+            }
+            
+        }
+        return adj;
+    }
+
 
 }

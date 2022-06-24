@@ -93,3 +93,15 @@ body {
     margin-top: 10%;
     font-size: larger;
 }
+table{
+    border-collapse: collapse;
+    width: 100%;
+
+}
+th,td{
+    border: 1px solid #04AA6D;
+    text-align: center;
+}
+tbody tr:hover{
+    background: #04AA6D;
+}

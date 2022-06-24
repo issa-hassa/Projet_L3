@@ -134,8 +134,10 @@ utilitaire.max = function(tab){
     })
 }
 utilitaire.maxComp = function(tab){
-   return  tab.reduce(function(a,b){
-            return (a.numComp > b.numComp ? a.numComp : b.numComp)
-    })
+   let max = Number.NEGATIVE_INFINITY;
+   for(n of tab){
+    if(n.numComp >= max) max = n.numComp;
+   }
+   return max;
 }
 

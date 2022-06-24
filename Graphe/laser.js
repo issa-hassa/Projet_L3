@@ -70,11 +70,12 @@ class laser
                 let max = utilitaire.maxComp(this.cibles);
                 
                 let palet = new paletCouleur();
-                
+               
                 if(this.i <= max) {
+            
                     if(this.icouleur < palet.couleurs.length ) {
                         let couleur = palet.couleurs[this.icouleur];
-                    
+                       
                         for (const n of this.cibles.filter(a => a.numComp === this.i)) {
                             n.couleur(couleur.r,couleur.g,couleur.b);
                         } 
@@ -86,6 +87,7 @@ class laser
                     this.i++;
                     
                 }
+                this.n++;
             }
             
         }
