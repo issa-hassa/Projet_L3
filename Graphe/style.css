@@ -102,6 +102,11 @@ th,td{
     border: 1px solid #04AA6D;
     text-align: center;
 }
-tbody tr:hover{
+
+tbody tr:nth-child(even){
+    background: #ECF0F1;
+}
+tbody tr:hover {
     background: #04AA6D;
+
 }
