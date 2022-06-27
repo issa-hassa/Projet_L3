@@ -9,6 +9,8 @@ class arc{
         this.oriente = false;
         this.ret  = false;
         this._c = circular.register('arc');
+        this.flot = 0;
+        this.arcRetours = undefined;
     }
     /**
      * dessine l'arc

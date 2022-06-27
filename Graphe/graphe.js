@@ -52,6 +52,7 @@ class Graphe{
     ajouterArcs(a){
        
         a.oriente = this.oriente;
+        
         this.arcs.push(a);
     }
     /**

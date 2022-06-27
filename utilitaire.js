@@ -140,4 +140,44 @@ utilitaire.maxComp = function(tab){
    }
    return max;
 }
+utilitaire.findPath = function(a,b,g){
+    let u = new UnionFind(g.noeuds);
+    for (const arc of g.arcs) {
+        if(arc.noeud1 == a ) {
+            u.union(arc.noeud1, arc.noeud2);
+        }
+        if( arc.noeud2 == b) {
+            u.union(arc.noeud1, arc.noeud2);
+        }
+    }
+    return u.connecter(a,b);
+
+}
+utilitaire.findPathDFS = function(a,b,g){
+    for (const n of g.noeuds) {
+        n.marquer = false;
+    }
+   let s = [];
+   let res = [];
+   s.push(a);
+   a.marquer = true;
+   while(s.length !== 0){
+    let v = s.pop();
+    for (const n of v.noeudsVoisin(g)) {
+        if(n == b){ 
+            res.push(g.getArc(v,n));
+            return res;
+        }
+        if(!n.marquer){
+            res.push(g.getArc(v,n)); 
+            s.push(n); 
+            n.marquer = true;
+        }
+    }
+   }
+   return false;
+//
+//res.push(g.getArc(v,n));
+
+}
 

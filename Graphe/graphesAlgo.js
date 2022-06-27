@@ -730,9 +730,10 @@ function matriceAdj(g){
        
         
     }
-
-
-
-
-
+}
+function ford_fulkerson(g){
+    for (const a of g.arcs) {
+        a.flot = 0;
+    }
+    
 }
