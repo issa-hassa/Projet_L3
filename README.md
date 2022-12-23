@@ -44,9 +44,10 @@ $ git clone https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe.git ou telecha
 On peut commencer à utiliser AlgoSoupe en ouvarant   l'un des pages du site (web.html,Algo.html ou graphe.html) dans un naviguateur.
 
 
-Ou en utilisant le lien du site  : ![ici](https://issa-hassa.github.io/Projet_L3/)
+
 
 ```
+Ou en utilisant le lien du site  : ![ici](https://issa-hassa.github.io/Projet_L3/)
 
 ## Utilisation
 
