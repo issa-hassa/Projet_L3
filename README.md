@@ -37,12 +37,14 @@ https://www.youtube.com/watch?v=gMZz6K70meg
 
 ---
 
-On peut acceder au projet de la manière suivante :
+Pour acceder au projet  :
 
 ```
 $ git clone https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe.git ou telecharger directement le projet  ![ici](https://gitlab.istic.univ-rennes1.fr/haissa/algosoupe/-/archive/master/algosoupe-master.zip)
 On peut commencer à utiliser AlgoSoupe en ouvarant   l'un des pages du site (web.html,Algo.html ou graphe.html) dans un naviguateur.
 
+
+Ou en utilisant le lien du site  : ![ici](https://issa-hassa.github.io/Projet_L3/)
 
 ```
 
