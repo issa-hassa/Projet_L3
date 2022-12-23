@@ -47,7 +47,7 @@ On peut commencer à utiliser AlgoSoupe en ouvarant   l'un des pages du site (we
 
 
 ```
-Ou en utilisant le lien du site  : ![ici](https://issa-hassa.github.io/Projet_L3/)
+Ou en utilisant le lien du site  : https://issa-hassa.github.io/Projet_L3/
 
 ## Utilisation
 
