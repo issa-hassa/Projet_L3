@@ -18,6 +18,7 @@
     body {
       padding: 0;
       margin: 0;
+      overflow: hidden;  
     }
   </style>
 </head>
@@ -42,31 +43,40 @@
 
   </header>
   <div class="algoE">
-    <h1>L-system ( plante )</h1>
-    
-    
-    <p>Un l-system (Lindenmayer-system nommés d'apès Aristid Lindenmayer) est une grammaire <br>
-      formelle composé <strong>d'un alphabet V </strong>, <strong>d'un axiome w </strong>qui definit l'état initiale du
-      systeme,<br>
-      et <strong>d'un ensemble de regeles P </strong> définissant la façon dont les variables peuvent être remplacées<br>
-      par des combinaisons de constantes et d'autres variables.
+    <h1>Ensemble de Mendelbrot</h1>
+    <p>L'Ensemble de Mandelbrot est l'ensemble de tous les nombres complexes <em>c</em> pour lesquels la fonction<br>
+        <em>f<sub>c</sub>(z) = z<sup>2</sup> + c</em>  ne diverge pas lorsqu'elle est itérée à partir de <em>z = 0</em>, 
+        c'est-à-dire que la séquence <em>f<sub>c</sub>(0)</em>, <em>f<sub>c</sub>(f<sub>c</sub>(0))</em>, <em>f<sub>c</sub>(f<sub>c</sub>(f<sub>c</sub>(0)))</em>, ... reste bornée.
     </p>
-    <h3>Regles pour la production du tapi de sierpinski</h3>
-    <ul>
-      <li> <strong>Alphabet V : (X,F,+,-,[,]) </strong> </li>
-      <li> <strong> Axiome W : X </strong> </li>
-      <li> <strong> Regles W : (X → F+[[X]-X]-F[-FX]+X), (F → FF) </strong> </li>
-      <li><strong>X : </strong>ne correspond à aucune action de dessin et est utilisé pour controler l'evolution de la courbe.</li>
-      <li><strong>F : </strong>dessiner une ligne droite.</li>
-      <li><strong>+ : </strong>Tourner à droite. </li>
-      <li><strong>- :</strong>Tourner à gauche.</li>
-      <li><strong>[ :</strong>Enregistrer les valeurs de la position et de l'angle.</li>
-      <li><strong>] :</strong>Restaurer les valeurs de la position et de l'angle.</li>
-    
-    </ul>
+    <h3>Règles pour la production visuelles</h3>
+    <p>L'ensemble de Mandelbrot est souvent visualisé en colorant les points du plan complexe (représentant différentes valeurs de <em>c</em>) en fonction du nombre d'itérations nécessaires pour que <em>z<sub>n+1</sub></em> dépasse la valeur limite. Les points qui ne dépassent pas la limite après un grand nombre d'itérations sont généralement considérés comme faisant partie de l'ensemble de Mandelbrot.</p>
+  <p>Cette structure complexe et fractale génère des motifs incroyablement détaillés et intéressants lorsqu'elle est visualisée graphiquement, ce qui en fait l'un des exemples les plus célèbres de mathématiques visuelles et de fractales.</p>
+   
+  <ul>
+    <li>
+      <p>On commence par convertir les coordonnées de chaque pixel en une fonction complexe.</p>
+    </li>
+      <li>
+          <p>On Commence avec <em>z<sub>0</sub> = 0</em>.</p>
+      </li>
+      <li>
+          <p>Pour chaque itération <em>n</em>, on calcule <em>z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c</em>.</p>
+      </li>
+      <li>
+          <p>Si le module de <em>z<sub>n+1</sub></em> (c'est-à-dire sa distance par rapport à l'origine dans le plan complexe) devient supérieur à une certaine valeur limite (par exemple, <em>2</em><sup>2</sup>), alors <em>c</em> n'appartient pas à l'ensemble de Mandelbrot.</p>
+      </li>
+      <li>
+          <p>Si le module de <em>z<sub>n+1</sub></em> reste borné (ne devient jamais trop grand), alors <em>c</em> appartient à l'ensemble de Mandelbrot.</p>
+      </li>
+  </ul>
+
+  <p>On peut se déplacer avec le flèches du clavier et zoomer avec le slider. </p>
+  
   </div>
-  <div class="canvas" id="canvas"></div>
-  <div class="textL1" id="textL1"> </div>
+  <div class="canvas" id="canvas">
+    <div class="canvasFooter" id = canvasFooter></div>
+  </div>
+
  
 
 
