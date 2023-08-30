@@ -1,0 +1,61 @@
+.algoE{
+    
+  float: right;
+ overflow: scroll;
+ height: 70%;
+ width: 45%;
+ border: solid;
+ padding-left: 10px;
+ padding-right: 10px;
+ margin-right: 10px;
+ margin-top: 20px;
+}
+.textL1 {
+
+    float: right;
+    overflow: scroll;
+    height: 70%;
+    width: 45%;
+    border: solid;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+    
+.canvas {
+     height: 100%;
+     width: 50%;
+     float: left;
+     margin-left: 25px;
+    margin-top: 30px;
+ 
+ }
+ .canvasFooter button {
+     cursor: pointer;
+     border: none;
+     padding: 8px;
+     color: white;
+     background-color: #04AA6D;
+     margin: 10px;
+ }
+
+ .canvasFooter button:hover {
+     opacity: 0.6;
+     transition: 0.9s;
+ }
+ .canvasFooter{
+    margin-left: 20px;
+ }
+ .canvaParent{
+    display: flex;
+    flex-direction: column;
+ }
+h1,h3 {
+    color: white;
+    text-align: center;
+    background-color: rgb(72, 72, 97);
+    display: block;
+    padding-top: 10px;
+
+}

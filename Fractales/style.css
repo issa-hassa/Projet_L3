@@ -31,18 +31,25 @@
     margin-top: 30px;
  
  }
- .canvas button {
+ .canvasFooter button {
      cursor: pointer;
-     position: absolute;
      border: none;
      padding: 8px;
      color: white;
      background-color: #04AA6D;
+     margin: 10px;
  }
 
- .canvas button:hover {
+ .canvasFooter button:hover {
      opacity: 0.6;
      transition: 0.9s;
+ }
+ .canvasFooter{
+    margin-left: 20px;
+ }
+ .canvaParent{
+    display: flex;
+    flex-direction: column;
  }
 h1,h3 {
     color: white;

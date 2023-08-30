@@ -1,7 +1,7 @@
 let c ;
 const MAX_ITERATION = 500
-const REAL_SET = {start : -4, end:4}
-const IMG_SET = {start : -4, end:4}
+const REAL_SET = {start : -2, end:2}
+const IMG_SET = {start : -2, end:2}
 
 
 let scale = 1
@@ -41,14 +41,9 @@ function drawBort(){
          let index = (i + j*width)*4;
 
          // Change color based on iteration count
-         let fillColor;
-         if (m === MAX_ITERATION) {
-             fillColor = color(0); // Set to black for points in the Mandelbrot set
-         } else {
-             // Create a gradient color between blue and red
-             let lerpedColor = lerpColor(color(100, 255, 255), color(255, 200, 100), norm);
-             fillColor = color(lerpedColor);
-         }
+         let    fillColor = map(m,0,MAX_ITERATION,230,0)
+
+        
 
          pixels[index + 0] = red(fillColor);
          pixels[index + 1] = green(fillColor);
