@@ -29,9 +29,9 @@ function setup() {
    const canvas = document.getElementById('defaultCanvas0');
    const context = canvas.getContext('2d');
    context.canvas.willReadFrequently = true; // Set the attribute
-   zoomSlider = createSlider(0.1, 100, 1, 0.000000001);
-   zoomSlider.parent("canvasFooter");
-   zoomSlider.style('width', '500px');
+   // zoomSlider = createSlider(0.1, 100, 1, 0.000000001);
+   // zoomSlider.parent("canvasFooter");
+   // zoomSlider.style('width', '500px');
 
    increaseButton = createButton("+");
    increaseButton.parent("canvasFooter")
