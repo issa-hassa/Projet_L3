@@ -1,24 +1,18 @@
-let axiome = "A";
+let axiome = "X";
 let phrase = axiome;
 let button;
 let angle;
 let len = 50;
 let colore = 10;
 let c;
-
-
 function setup() {
     //lsys(phrase, 50);
-
-   c =  createCanvas(500,500);
-   background(51);
-    button = createButton("generer");
+    c = createCanvas(500,500);
     c.parent("canvas");
-    button.parent("canvas");
-    
-
+    button = createButton("generer");
+    button.parent("canvasFooter")
     button.mousePressed(genere);
-    angle = (PI/3);
+    angle = radians(25);
 }
 //non terminal F
 //terminal + -
@@ -29,11 +23,11 @@ function setup() {
 function genere(){
     let nouvelPhrase ="";
     for(let i = 0; i<phrase.length;i++){
-        if(phrase.charAt(i) == "A"){
-            nouvelPhrase +=regle.a;
-        }
-        else if( phrase.charAt(i) == "B"){
+        if(phrase.charAt(i) == "F"){
             nouvelPhrase +=regle.b;
+        }
+        else if( phrase.charAt(i) == "X"){
+            nouvelPhrase +=regle.a;
         }
         else {
             nouvelPhrase +=phrase.charAt(i);
@@ -44,20 +38,19 @@ function genere(){
     
     let p = createP(phrase);
     p.parent("textL1");
-    lsys(phrase, len);
-     len*=0.6;   
+    lsys(phrase, len,(150,85 + colore*1.75,colore+=2));
+    len *=0.55; 
 
 }
-function lsys(phrase, len){
+function lsys(phrase, len,color){
     background(51);
     resetMatrix();
-    translate(width,height);
-    stroke(255);
-    rotate(-PI/2);
+    translate(width/2,height);
+    stroke(color);
     for(let i = 0; i< phrase.length;i++){
         
         let lettreCourant = phrase.charAt(i);
-        if(lettreCourant === "A" || lettreCourant === "B" ){
+        if(lettreCourant == "F"){
             
             line(0,0,0,-len);
             translate(0,-len);
@@ -71,19 +64,22 @@ function lsys(phrase, len){
             rotate(-angle);
             
          }
-         
+         else if (lettreCourant == "["){
+            push();
+         }
+         else if (lettreCourant == "]"){
+           pop();
             
-         
+         }
 
 
     }
 
 }
-//rules  : (A → B−A−B), (B → A+B+A)
 let regle =  {
     
-   a: " B-A-B",
-   b : "A+B+A"
+   a: "F+[[X]-X]-F[-FX]+X",
+   b : "FF"
 
 }
 function draw(){

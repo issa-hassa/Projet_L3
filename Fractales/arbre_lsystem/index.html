@@ -1,0 +1,82 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="../../libraries/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="sketch_220215a.js"></script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../../header.css">
+
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+
+  <!-- This line removes any default padding and style.
+       You might only need one of these values set. -->
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+ 
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+
+    <div class="logo">
+      <div class="imgLogo"><img src="../../images/logo.png" alt=""> </div>
+      <div class="nomLogo">
+        <h3>AlgoSoupe</h3>
+      </div>
+    </div>
+
+    <div class="onglets">
+      <a href="../../web.html">Acceuil</a>
+      <a href="../../Algo.html">Algorithmes</a>
+      <a href="../../graphe.html"> Graphe </a>
+
+
+    </div>
+
+  </header>
+  <div class="algoE">
+    <h1>Génération d'un arbre avec un L-Système</h1>
+    <p>Un L-Système (Lindenmayer System) est une méthode de développement formel largement utilisée pour générer des structures fractales et complexes telles que des arbres. En utilisant un axiome initial et des règles de remplacement, il est possible de créer des motifs visuellement intéressants et réalistes.</p>
+    
+    <h3>Axiome et Règles de Remplacement</h3>
+    <p>L'axiome initial est la séquence de caractères "X". Les règles de remplacement dictent comment chaque caractère dans la séquence est transformé à chaque itération. Dans cet exemple, nous avons les règles :</p>
+    <ul>
+        <li>Règle X : "F+[[X]-X]-F[-FX]+X"</li>
+        <li>Règle F : "FF"</li>
+    </ul>
+    <p>Chaque caractère dans la séquence d'origine ("X") sera remplacé par les caractères correspondants dans les règles à chaque itération.</p>
+    
+    <h3>Génération et Affichage</h3>
+    <p>En cliquant sur le bouton "Générer", vous pouvez itérer à travers les règles de remplacement et afficher la progression de la séquence de caractères. Chaque caractère représente une instruction pour dessiner, tourner ou déplacer dans le dessin. Les caractères "F" sont utilisés pour dessiner une ligne, "+" et "-" pour effectuer des rotations, "[" pour sauvegarder la position et "]" pour la restaurer.</p>
+    
+    <h3>Processus Itératif</h3>
+    <p>À chaque itération, chaque caractère de la séquence existante est remplacé en fonction des règles. Le processus est répété pour un nombre spécifié d'itérations. Cela permet de construire progressivement une séquence plus longue et complexe.</p>
+    
+   
+</div>
+
+
+
+  <div class="canvaParent">
+   
+    <div class="canvas" id="canvas">
+    </div>
+    <div class="canvasFooter" id = canvasFooter>
+     
+  </div>
+  <div class="textL1" id="textL1"> </div>
+ 
+
+
+</body>
+
+</html>

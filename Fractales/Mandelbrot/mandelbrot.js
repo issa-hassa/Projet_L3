@@ -6,22 +6,41 @@ const IMG_SET = {start : -2, end:2}
 
 let scale = 1
 let prevscale = 1
+let scaleChange = 0;
+
+
 let ctx = 0
 let cty = 0
 
+let increaseButton;
+let decreaseButton;
+
+
 let update  = true
 function setup() {
-
+  
    colorMode(HSB)
 
 
    c =  createCanvas(500,500);
    c.parent("canvas");
-
+   // let context = c.getContext('2d')
+   // context.willReadFrequently = true; 
+   const canvas = document.getElementById('defaultCanvas0');
+   const context = canvas.getContext('2d');
+   context.canvas.willReadFrequently = true; // Set the attribute
    zoomSlider = createSlider(0.1, 100, 1, 0.000000001);
    zoomSlider.parent("canvasFooter");
    zoomSlider.style('width', '500px');
 
+   increaseButton = createButton("+");
+   increaseButton.parent("canvasFooter")
+   increaseButton.mousePressed(increaseScale);
+
+   decreaseButton = createButton("-");
+   decreaseButton.mousePressed(decreaseScale);
+   decreaseButton.parent("canvasFooter")
+   
 
     pixelDensity(1);
     //noLoop();
@@ -38,16 +57,26 @@ function drawBort(){
          }
          const [m, isMandelbrotSet] = mandelbrot(complex)
          const norm = map(m, 0, MAX_ITERATION, 0, 1);
-         let index = (i + j*width)*4;
 
          // Change color based on iteration count
-         let    fillColor = map(m,0,MAX_ITERATION,230,0)
+        let hue,saturation,brightness
 
+
+         if ( m ===  MAX_ITERATION ) saturation = 0
+         else {
+            
+            hue = map(m,0,MAX_ITERATION,0,255)
+            saturation =map(m, 0, MAX_ITERATION, 100, 1000);
+            brightness = map(m, 0, MAX_ITERATION, 50, 255);
+
+         }
+         //
         
-
-         pixels[index + 0] = red(fillColor);
-         pixels[index + 1] = green(fillColor);
-         pixels[index + 2] = blue(fillColor);
+         
+         let index = (i + j*width)*4;   
+         pixels[index + 0] = hue
+         pixels[index + 1] = saturation
+         pixels[index + 2] = brightness
          pixels[index + 3] = 255;
          }
     }
@@ -59,9 +88,12 @@ function drawBort(){
    
 }
 function draw(){
-   prevscale = scale
-   scale = zoomSlider.value();
-   console.log(scale)
+   if (scaleChange !== 0) {
+      update = true;
+      scale *= 1 + scaleChange * 0.1; // Ajuster la valeur de scale
+      scaleChange = 0; // Réinitialiser le changement de scale
+      
+    }
    if(prevscale !== scale){
       update = true
    }
@@ -113,3 +145,10 @@ function mandelbrot(c) {
    return [n, d <=2]
 
 }
+function increaseScale() {
+   scaleChange = 1; // Augmenter la valeur de scale
+ }
+ 
+ function decreaseScale() {
+   scaleChange = -1; // Diminuer la valeur de scale
+ }

@@ -33,7 +33,7 @@ class Boid {
     }
 
     render(){
-        this.drawArrow(color(0,0,0))
+        this.drawArrow(color(255,255,255))
     }
 
     applyForce(force){
@@ -49,13 +49,13 @@ class Boid {
 
     seek(target){
 
-        let desired = p5.Vector.sub(target,this.position);  // A vector pointing from the location to the target
-        // Normalize desired and scale to maximum speed
+        let desired = p5.Vector.sub(target,this.position);  // un vecteur qui pointe vers la cible
+        // normaliser le vecteur et le mettre à l'echelle
         desired.normalize();
         desired.mult(this.maxspeed);
-        // Steering = Desired minus Velocity
+        // Steering = Desired moins Velocity
         let steer = p5.Vector.sub(desired,this.velocity);
-        steer.limit(this.maxforce);  // Limit to maximum steering force
+        steer.limit(this.maxforce);  // limiter stee à maxForce
         return steer;
     }
 
@@ -64,10 +64,10 @@ class Boid {
        
         let steer = createVector(0, 0);
         let count = 0;
-        // For every boid in the system, check if it's too close
+        
         for (let i = 0; i < boids.length; i++) {
           let d = p5.Vector.dist(this.position,boids[i].position);
-          // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
+
           if ((d > 0) && (d < desiredseparation)) {
             // Calculate vector pointing away from neighbor
             let diff = p5.Vector.sub(this.position, boids[i].position);
@@ -155,7 +155,7 @@ class Boid {
         fill(myColor);
         translate(this.position.x, this.position.y);
         rotate(this.velocity.heading());
-        let arrowSize = 10;
+        let arrowSize = 5;
         triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
         pop();
     }

@@ -14,15 +14,15 @@
 
     float: right;
     overflow: scroll;
-    height: 70%;
-    width: 45%;
+    height: 250px;
+    width: 88%;
     border: solid;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-right: 10px;
+    /* padding-left: 10px; */
+    /* padding-right: 10px; */
+    margin-left: 100%;
     margin-top: 20px;
 }
-    
+
 .canvas {
      height: 100%;
      width: 50%;

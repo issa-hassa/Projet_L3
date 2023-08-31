@@ -86,13 +86,13 @@ function drawBort(){
          //let fillColor;
          let hue,saturation,brightness
 
-         console.log(m===MAX_ITERATION)
+
          if ( m ===  MAX_ITERATION ) saturation = 0
          else {
             
-            hue = map(m,0,MAX_ITERATION,270,180)
-            saturation =100
-            brightness = 100
+            hue = map(m,0,MAX_ITERATION,0,255)
+            saturation =map(m, 0, MAX_ITERATION, 0, 1000);
+            brightness = map(m, 0, MAX_ITERATION, 50, 255);
 
          }
          //
@@ -168,7 +168,7 @@ function mandelbrot(c) {
      }
      //calcule du module de Z
      d = xCarre + yCarre
-     if(d > 16) break
+     if(d > 2) break
      
      n +=1
    } while( n < MAX_ITERATION)
@@ -182,7 +182,8 @@ function mandelbrot(c) {
 
 
 function updateConstante() {
-   if(constante.x != NaN && constante.y != NaN ){
+   if(!isNaN(constante.x)  && !isNaN(constante.y) ){
+
       console.log(constante)
       update = true
    }

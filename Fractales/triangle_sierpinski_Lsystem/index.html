@@ -1,0 +1,69 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="../../libraries/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="triangleSier.js"></script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../../header.css">
+  
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+
+  <!-- This line removes any default padding and style.
+       You might only need one of these values set. -->
+  <style> body { padding: 0; margin: 0; } </style>
+</head>
+
+<body>
+  <header>
+  
+    <div class="logo">
+      <div class="imgLogo"><img src="../../images/logo.png" alt=""> </div>
+      <div class="nomLogo">
+        <h3>AlgoSoupe</h3>
+      </div>
+    </div>
+  
+    <div class="onglets">
+      <a href="../../web.html">Acceuil</a>
+      <a href="../../Algo.html">Algorithmes</a>
+      <a href="../../graphe.html"> Graphe </a>
+  
+  
+    </div>
+  
+  </header>
+  <div class="algoE">
+    <h1>Triangle de Sierpinski avec L-Système</h1>
+    <p>Le triangle de Sierpinski est un fractal intéressant qui peut être généré à l'aide d'un L-Système. Ce L-Système utilise des règles simples pour remplacer chaque caractère par une séquence de caractères qui forme le motif du triangle de Sierpinski.</p>
+    <h3>Construction du Triangle de Sierpinski</h3>
+    <p>Le L-Système pour générer le triangle de Sierpinski peut être défini avec l'axiome initial "A" et les règles suivantes :</p>
+    <ul>
+        <li>Règle A : "B-A-B"</li>
+        <li>Règle B : "A+B+A"</li>
+    </ul>
+    <h3>Génération et Affichage</h3>
+    <p>À chaque itération, le L-Système remplace chaque caractère conformément aux règles. Les caractères non substitués (les terminaux) sont utilisés pour dessiner des segments. Les caractères "+" et "-" sont utilisés pour effectuer des rotations. En combinant ces règles, le L-Système génère le motif du triangle de Sierpinski.</p>
+    <h3>Interaction</h3>
+    <p>En cliquant sur le bouton "Générer", vous pouvez itérer et afficher l'évolution de la phrase du L-Système, ce qui conduira à la création progressive du triangle de Sierpinski.</p>
+  </div>
+
+
+    
+    
+  
+  <div class="canvaParent">
+   
+    <div class="canvas" id="canvas">
+    </div>
+    <div class="canvasFooter" id = canvasFooter>
+     
+  </div>
+
+  <div class="textL1" id="textL1"> </div>
+
+
+</body>
+</html>

@@ -59,6 +59,6 @@ class Barre{
     }
     show(){
         rect(this.x,height - this.h,largeur,this.h);
-        text(""+ floor(this.h),this.x,height - this.h);
+        //text(""+ floor(this.h),this.x,height - this.h);
     }
 }

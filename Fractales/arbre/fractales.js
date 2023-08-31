@@ -4,9 +4,9 @@ let c;
 function setup() {
    c = createCanvas(500,500);
    
-   //c.parent("canvas");
+   c.parent("canvas");
     slider = createSlider(0,TWO_PI,PI/4, 0.01);
-  //  slider.parent("canvas");
+    slider.parent("canvasFooter");
 
 
 }
