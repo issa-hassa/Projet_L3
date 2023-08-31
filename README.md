@@ -66,24 +66,5 @@ Ou en utilisant le lien du site  : https://issa-hassa.github.io/Projet_L3/
 - #### On peut selectionner plusieurs arcs et leurs attribués le meme poids
   ![poids+](images/poids%2B.gif)
 
-## Fonctionalités à ajouter :
 
-### Partie graphe :
 
-- Ajouter le reste des algorithmes du cours.
-- Ajouter la selection des arcs retours dans un graphe orienté.
-
-### Partie algorithmes :
-
-- Ajouter le reste des algorithmes du cours.
-
-### Général :
-
-- Adapter le site pour tout type de résolution d'écran.
-
-## Auteurs :
-
-Issa Hassan Fadoul : hassan-fadoul.issa@etudiant.univ-rennes1.fr
-Guermouche Asma : asma.guermouche@etudiant.univ-rennes1.fr
-Aiman Aouad : aiman.aouad@etudiant.univ-rennes1.fr
-Gulizar Agayeva : gulizar.agayeva@etudiant.univ-rennes1.fr
