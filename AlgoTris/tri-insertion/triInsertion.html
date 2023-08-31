@@ -6,7 +6,7 @@
     <script language="javascript" type="text/javascript" src="../../libraries/p5.min.js"></script>
     <script language="javascript" type="text/javascript" src="tri-insertion.js"></script>
     <link rel="stylesheet" href="../../header.css">
-    <link rel="stylesheet" href="../styleExpAlgo.css">
+    <link rel="stylesheet" href="/Fractales/style.css">
 </head>
 
 <body>
@@ -32,36 +32,29 @@
     <section class="general">
         <div id="canvas" class="canvas"></div>
         <div class="algoE">
-            <h1>Tri par insertion</h1>
-            <h2>Visualisation :</h2>
+            <h1>Tri par Insertion</h1>
+            <p>Le tri par insertion est un algorithme de tri efficace pour de petites quantités de données. Il fonctionne en construisant progressivement une liste triée à partir d'une liste non triée.</p>
+            <h3>Fonctionnement</h3>
+            <p>Le tri par insertion fonctionne comme suit :</p>
+            <ol>
+                <li>Début avec le premier élément de la liste et considérez-le comme une liste triée.</li>
+                <li>Prenez le prochain élément non trié et insérez-le dans la liste triée à la bonne position.</li>
+                <li>Répétez l'étape 2 jusqu'à ce que tous les éléments soient triés.</li>
+            </ol>
+            <h3>Exemple</h3>
+            <p>Supposons que nous voulions trier le tableau [7, 2, 4, 1, 5]. Le tri par insertion fonctionnerait comme suit :</p>
             <ul>
-                <li> <strong> Barre Grise :</strong> L'élèment à l'indice i</li>
-                <li> <strong> Barre Rouge :</strong> L'élément à l'indice j </li>
+                <li>Étape 1 : La liste triée est [7].</li>
+                <li>Étape 2 : Insérer 2 dans la position correcte, la liste triée devient [2, 7].</li>
+                <li>Étape 3 : Insérer 4 dans la position correcte, la liste triée devient [2, 4, 7].</li>
+                <li>Étape 4 : Insérer 1 dans la position correcte, la liste triée devient [1, 2, 4, 7].</li>
+                <li>Étape 5 : Insérer 5 dans la position correcte, la liste triée devient [1, 2, 4, 5, 7].</li>
+                <li>Résultat : Le tableau trié est [1, 2, 4, 5, 7].</li>
             </ul>
-            <h2>Principe :</h2>
-            <p>Le tri par insertion est un algorithme de tri simple <br>
-                qui fonctionne de la même manière que le tri des cartes lors d'une partie de jeu de cartes <br>
-                Virtuellement, le tableau est divisé en deux parties : une partie triée et une partie non triée <br>
-                Les éléments de la partie non triée, sont placés à la bonne position dans la partie triée <br>
-            </p>
-            <h2>Algorithm :</h2>
-            <pre>
-                        procédure tri_insertion(tableau T) <br>
-                            pour i de 1 à taille(T) - 1 <br>
-                                # mémoriser T[i] dans x <br>
-                                x ← T[i] <br>                           
-                                # décaler les éléments T[0]..T[i-1] qui <br>
-                                sont plus grands que x, en partant de T[i-1] <br> 
-                                j ← i <br>                        
-                                tant que j > 0 et T[j - 1] > x<br>
-                                    T[j] ← T[j - 1]<br>
-                                    j ← j - 1<br>
-                                # placer x dans le "trou" laissé par le décalage <br>
-                                T[j] ← x   <br>       
-                        </pre>
-
-
+            <h3>Avantages et Limitations</h3>
+            <p>Le tri par insertion est adapté pour de petites quantités de données ou lorsque la liste est déjà partiellement triée. Cependant, il n'est pas très efficace pour de grandes listes car sa complexité temporelle est de l'ordre de O(n^2).</p>
         </div>
+        
     </section>
 
 

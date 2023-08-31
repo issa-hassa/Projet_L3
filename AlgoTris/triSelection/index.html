@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script language="javascript" type="text/javascript" src="../../libraries/p5.min.js"></script>
   <link rel="stylesheet" href="../../header.css">
-  <link rel="stylesheet" href="../styleExpAlgo.css">
+  <link rel="stylesheet" href="/Fractales//style.css">
 
 </head>
 
@@ -32,45 +32,31 @@
   <section class="general">
     <div id="canvas" class="canvas"></div>
     <div class="algoE">
-    <h1>Tri par sélection</h1>
-    <h2>Visualisation :</h2>
-    <ul>
-      <li> <strong> Barre Grise :</strong> L'élément à l'indice i</li>
-      <li> <strong> Barre Rouge :</strong> L'élément à l'indice j </li>
-      <li> <strong> Barre verte : </strong> Le plus petit élément entre i et j </li>
-    </ul>
-    <h2>Principe :</h2>
-    <p>Le tri par sélection est un algorithme de tri très simple qui consiste à chercher <br>
-      le plus petit élément du tableau, le remplacer avec l'élément a l'indice zéro, <br>
-      Recommencer l'opération mais cette fois si en remplaçant le plus petit élément avec <br>
-      l'élément a l'indice un et ainsi de suite. L’algorithme divise ainsi le tableau en deux parties : <br>
-    <ul>
-      <li> Une partie triée. </li>
-      <li> Et une partie non triée.</li>
-      A chaque itération l’algorithme choisit le plus petit élément de la partie non triée et <br> le place à la fin de la
-      partie triée.
-    
-    </ul>
-    
-    
-    </p>
-    <h2>Algorithm :</h2>
-    
-    <pre>
-                  procédure tri_selection(tableau t) <br>
-                  n ← longueur(t) <br>
-                  pour i de 0 à n - 2 <br>
-                  min ← i <br>
-                  pour j de i + 1 à n - 1 <br>
-                  si t[j] < t[min], alors min ← j fin pour <br>
-                    si min ≠ i, alors échanger t[i] et t[min] <br>
-                    fin pour <br>
-                  fin procédure<br>
-    
-                </pre>
-
-
-    </div>
+      <h1>Tri par Sélection</h1>
+      <p>Le tri par sélection est un algorithme simple de tri qui consiste à sélectionner à chaque étape l'élément le plus petit (ou le plus grand) parmi les éléments non triés et à l'échanger avec l'élément situé à la première position des éléments non triés.</p>
+      <h3>Fonctionnement</h3>
+      <p>Le tri par sélection fonctionne comme suit :</p>
+      <ol>
+          <li>Rechercher l'élément minimum (ou maximum) dans la portion non triée du tableau.</li>
+          <li>Échanger cet élément avec l'élément situé à la première position de la portion non triée.</li>
+          <li>Répéter les étapes 1 et 2 pour chaque élément restant de la portion non triée.</li>
+      </ol>
+      <h3>Exemple</h3>
+      <p>Supposons que nous voulions trier le tableau [5, 2, 9, 3, 7]. Le tri par sélection fonctionnerait comme suit :</p>
+      <ul>
+          <li>Étape 1 : L'élément minimum est 2.</li>
+          <li>Étape 2 : Échanger 2 et 5.</li>
+          <li>Étape 3 : L'élément minimum est 3.</li>
+          <li>Étape 4 : Échanger 3 et 5.</li>
+          <li>Étape 5 : L'élément minimum est 5 (déjà à la bonne position).</li>
+          <li>Étape 6 : L'élément minimum est 7.</li>
+          <li>Étape 7 : Échanger 7 et 9.</li>
+          <li>Résultat : Le tableau trié est [2, 3, 5, 7, 9].</li>
+      </ul>
+      <h3>Avantages et Limitations</h3>
+      <p>Le tri par sélection est simple à comprendre et à implémenter. Cependant, il n'est pas très efficace pour de grands ensembles de données car il effectue beaucoup d'échanges. Sa complexité temporelle est de l'ordre de O(n^2).</p>
+  </div>
+  
   </section>
 
 

@@ -46,46 +46,28 @@
 
   </header>
   <div class="algoE">
-    <h1>Ensemble de Mendelbrot</h1>
-    <p>L'Ensemble de Mandelbrot est l'ensemble de tous les nombres complexes <em>c</em> pour lesquels la fonction<br>
-        <em>f<sub>c</sub>(z) = z<sup>2</sup> + c</em>  ne diverge pas lorsqu'elle est itérée à partir de <em>z = 0</em>, 
-        c'est-à-dire que la séquence <em>f<sub>c</sub>(0)</em>, <em>f<sub>c</sub>(f<sub>c</sub>(0))</em>, <em>f<sub>c</sub>(f<sub>c</sub>(f<sub>c</sub>(0)))</em>, ... reste bornée.
-    </p>
-    <h3>Règles pour la production visuelles</h3>
-    <p>L'ensemble de Mandelbrot est souvent visualisé en colorant les points du plan complexe (représentant différentes valeurs de <em>c</em>) en fonction du nombre d'itérations nécessaires pour que <em>z<sub>n+1</sub></em> dépasse la valeur limite. Les points qui ne dépassent pas la limite après un grand nombre d'itérations sont généralement considérés comme faisant partie de l'ensemble de Mandelbrot.</p>
-  <p>Cette structure complexe et fractale génère des motifs incroyablement détaillés et intéressants lorsqu'elle est visualisée graphiquement, ce qui en fait l'un des exemples les plus célèbres de mathématiques visuelles et de fractales.</p>
-   
-  <ul>
-    <li>
-      <p>On commence par convertir les coordonnées de chaque pixel en une fonction complexe.</p>
-    </li>
-    <li>
-          <p>On Commence avec <em>z<sub>0</sub> = 0</em>.</p>
-    </li>
-      <li>
-          <p>Pour chaque itération <em>n</em>, on calcule <em>z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c</em>.</p>
-      </li>
-      <li>
-          <p>Si le module de <em>z<sub>n+1</sub></em> (c'est-à-dire sa distance par rapport à l'origine dans le plan complexe) devient supérieur à une certaine valeur limite (par exemple, <em>2</em><sup>2</sup>), alors <em>c</em> n'appartient pas à l'ensemble de Mandelbrot.</p>
-      </li>
-      <li>
-          <p>Si le module de <em>z<sub>n+1</sub></em> reste borné (ne devient jamais trop grand), alors <em>c</em> appartient à l'ensemble de Mandelbrot.</p>
-      </li>
-  </ul>
-  <p>Des exemples de constante : </p>
-  <ul>
-    <li>c = 0.285 + 0i</li>
-    <li> c = 0.285 + 0.01i</li>
-    <li> c = 0.45 + 0.1428i</li>
-    <li>c = −0.70176 − 0.3842i</li>
-    <li>c = c = −0.835 − 0.2321i</li>
-    <li>c = −0.8 + 0.156i</li>
-    <li>c = −0.7269 + 0.1889i</li>
-  </ul>
-
-  <p>On peut se déplacer avec le flèches du clavier et zoomer avec le slider. </p>
-  
-  </div>
+    <h1>Simulation de Boids</h1>
+    <p>La simulation de Boids est un modèle de comportement collectif basé sur le vol en groupe observé chez les oiseaux et d'autres animaux. Les Boids sont des agents autonomes qui suivent quelques règles simples pour se déplacer et interagir avec leur environnement et les autres Boids.</p>
+    <h3>Règles de comportement des Boids</h3>
+    <ul>
+        <li>
+            <p><strong>Séparation :</strong> Chaque Boid essaie d'éviter les autres Boids qui se trouvent trop près. Utilisez le slider pour ajuster l'intensité de la séparation.</p>
+        </li>
+        <li>
+            <p><strong>Alignement :</strong> Chaque Boid tente de s'aligner avec les autres Boids à proximité en ajustant sa direction selon leur direction moyenne. Utilisez le slider pour ajuster l'intensité de l'alignement.</p>
+        </li>
+        <li>
+            <p><strong>Cohésion :</strong> Chaque Boid essaie de se rapprocher des autres Boids à proximité en ajustant sa direction pour se diriger vers leur position moyenne. Utilisez le slider pour ajuster l'intensité de la cohésion.</p>
+        </li>
+    </ul>
+    <p>Les forces de séparation, d'alignement et de cohésion sont combinées pour déterminer la nouvelle direction et la vitesse de chaque Boid à chaque étape de la simulation.</p>
+    <h3>Implémentation</h3>
+    <p>Chaque Boid est représenté par une position, une vitesse et une accélération. Les règles de comportement sont appliquées à chaque Boid en fonction de sa position par rapport aux autres Boids. En appliquant ces règles, les Boids interagissent pour former des motifs de vol en groupe complexes et réalistes.</p>
+    <p>La simulation peut être personnalisée en ajustant les paramètres tels que la distance de séparation, la portée d'alignement, la portée de cohésion et les intensités des forces. Ces paramètres influent sur le comportement global du groupe de Boids.</p>
+    <h3>Visualisation</h3>
+    <p>Chaque Boid est généralement représenté par une forme visuelle, un triangle dans notre cas, qui indique sa direction de mouvement. Les Boids se déplacent en groupe en suivant les règles de comportement, ce qui produit un comportement de vol collectif fascinant.</p>
+    <p>Utilisez les flèches du clavier pour déplacer le groupe de Boids et observez comment ils interagissent pour maintenir leur formation et éviter les collisions.</p>
+</div>
   <div class="canvaParent">
    
     <div class="canvas" id="canvas">

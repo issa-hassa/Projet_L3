@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../header.css">
     <link rel="stylesheet" href="../AlgoTris/styleExpAlgo.css">
 
+    <link rel="stylesheet" href="../Fractales/style.css">
+
 
 </head>
 
@@ -41,18 +43,22 @@
             </div>
         </div>
         <div class="algoE">
-            <h1>Labyrinthe</h1>
-            <h2>Principe :</h2>
-            <p> L’algorithme utilisé pour générer ce labyrinthe fonctionne de manière <br>
-                très similaire au parcours en profondeur d'un graphe.Tout d’abord on considère <br>
-                l’espace étant une grille composé de case formé de quatre mur. En commençant par <br>
-                une case donnée qu’on marque étant visitée, on sélectionne une case aléatoire adjacente <br>
-                à la case courante et qui n’est pas encore visitée. On supprime le mur séparant les deux cases <br>
-                et on marque la nouvelle case comme étant visitée et on l’ajoute dans une pile. On continue jusqu’à <br>
-                ce qu’on tombe sur un cul-de-sac et dans ce cas on dépile jusqu’à l’obtention d’une case ayant une case
-                <br> voisine non visité ( backtracking).
-            </p>
+            <h1>Génération d'un Labyrinthe avec l'Algorithme de Parcours en Profondeur</h1>
+            <p>L'algorithme de parcours en profondeur est une méthode couramment utilisée pour générer des labyrinthes aléatoires. Cet algorithme explore progressivement les différentes parties du labyrinthe en suivant un chemin aussi loin que possible avant de revenir en arrière pour explorer d'autres chemins.</p>
+            
+            <h3>Initialisation</h3>
+            <p>Le labyrinthe est créé en divisant l'espace en cellules carrées. Chaque cellule a des murs qui peuvent être supprimés pour créer des passages. Au début, toutes les cellules sont marquées comme non visitées.</p>
+            
+            <h3>Exploration</h3>
+            <p>Le processus de génération commence en choisissant une cellule de départ. Ensuite, à chaque étape, une cellule non visitée est choisie comme cellule courante. Des murs entre la cellule courante et une cellule adjacente sont retirés pour créer un passage, puis la cellule adjacente devient la nouvelle cellule courante. Si aucune cellule adjacente non visitée n'est disponible, la génération revient en arrière en suivant la pile des cellules précédentes.</p>
+            
+            <h3>Interaction</h3>
+            <p>Cliquez sur le bouton "Start/Stop" pour activer ou désactiver la génération automatique du labyrinthe. Vous pouvez également cliquer sur le bouton "Reset" pour réinitialiser le labyrinthe et recommencer la génération.</p>
+            
+            <h3>Affichage</h3>
+            <p>Chaque cellule est affichée sous forme de carré. Les murs entre les cellules sont retirés pour créer des passages. Les cellules visitées sont mises en évidence.</p>
         </div>
+        
     </section>
 
 
