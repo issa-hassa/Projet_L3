@@ -16,8 +16,7 @@
 
 ---
 
-Nous avons choisi de faire ce projet dans le but d'aider les futurs étudiants de la L3 informatique à mieux comprendre les algorithmes vus lors de nos modules.
-AlgoSoupe contient des visualisations des algorithmes utilisés dans les modules MAG (algorithmiques des graphes) et ALG2 (algorithmique) enseignés en troisième année à l'ISTIC. Il contient aussi une page sur laquelle on peut dessiner un graphe et appliquer des algorithmes sur ce dernier. L'exécution de l'algorithme sera détaillée pas à pas sur le graphe dessiné par l'utilisateur. Par ailleurs, on peut récupérer le graphe sous la forme d'une image png..
+J'ai choisi de travailler sur AlgoSoupe dans le but de passer le temps entre mon alternance en entreprise et mes cours. Lorsque j'ai du temps libre, je me consacre à la création de visualisations d'algorithmes. AlgoSoupe propose des visualisations d'algorithmes qui ont été abordés dans les modules MAG (Algorithmiques des graphes) et ALG2 (Algorithmique) lors de ma troisième année à l'ISTIC. Le site inclut également une page interactive permettant aux utilisateurs de dessiner leurs propres graphes et d'appliquer des algorithmes sur ces derniers. L'exécution des algorithmes est présentée étape par étape pour les graphes dessinés par l'utilisateur. De plus, il est possible de sauvegarder le graphe sous forme d'une image PNG.
 
 ## Video de présentation
 
@@ -66,24 +65,5 @@ Ou en utilisant le lien du site  : https://issa-hassa.github.io/Projet_L3/
 - #### On peut selectionner plusieurs arcs et leurs attribués le meme poids
   ![poids+](images/poids%2B.gif)
 
-## Fonctionalités à ajouter :
 
-### Partie graphe :
 
-- Ajouter le reste des algorithmes du cours.
-- Ajouter la selection des arcs retours dans un graphe orienté.
-
-### Partie algorithmes :
-
-- Ajouter le reste des algorithmes du cours.
-
-### Général :
-
-- Adapter le site pour tout type de résolution d'écran.
-
-## Auteurs :
-
-Issa Hassan Fadoul : hassan-fadoul.issa@etudiant.univ-rennes1.fr
-Guermouche Asma : asma.guermouche@etudiant.univ-rennes1.fr
-Aiman Aouad : aiman.aouad@etudiant.univ-rennes1.fr
-Gulizar Agayeva : gulizar.agayeva@etudiant.univ-rennes1.fr
